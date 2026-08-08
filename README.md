@@ -15,5 +15,5 @@
 
 - **Jesus AI Conversation** — 靈性陪伴對話技能官方網站
   - 網站: https://xuan905.github.io/jesus-ai-conversation/
-  - 技能: https://clawhub.ai/skills/jesus-ai-conversation
+  - 技能: https://clawhub.ai/xuan905/skills/jesus-ai-conversation
   - 原始碼: https://github.com/xuan905/jesus-ai-conversation
