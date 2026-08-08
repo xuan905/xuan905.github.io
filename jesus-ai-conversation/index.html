@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Jesus AI Conversation — 靈性陪伴對話技能官方網站 / Official website of the spiritual companion conversation skill">
+<title>Jesus AI Conversation — Official Site</title>
+<style>
+  :root{
+    --bg:#f6f9ff; --bg-soft:#eaf2fe; --bg-grad-1:#f6f9ff; --bg-grad-2:#dbe9fb;
+    --text:#1b2a4a; --text-soft:#4a5f85; --text-faint:#7d90b5;
+    --accent:#1e6fd9; --accent-strong:#1457b3; --accent-soft:#e2edfc;
+    --card:#ffffff; --card-border:#d8e5f6; --shadow:0 10px 30px rgba(30,111,217,.10);
+    --hero-text:#1b2a4a; --chip-bg:#eef4fd; --chip-text:#1e6fd9;
+    --btn-text:#ffffff; --border:#cfdff4; --quote:#f0f6fe;
+    --gold:#e8b13c;
+  }
+  html[data-theme="dark"]{
+    --bg:#0c0e13; --bg-soft:#151922; --bg-grad-1:#0c0e13; --bg-grad-2:#1a1408;
+    --text:#f6ecd4; --text-soft:#cfc09b; --text-faint:#9a8f72;
+    --accent:#f5b942; --accent-strong:#ffd166; --accent-soft:#2a2312;
+    --card:#141821; --card-border:#2b2f3a; --shadow:0 10px 30px rgba(0,0,0,.45);
+    --hero-text:#f6ecd4; --chip-bg:#201b10; --chip-text:#f5b942;
+    --btn-text:#141821; --border:#33384a; --quote:#1c1710;
+    --gold:#ffd166;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.7;
+    transition:background .4s ease,color .4s ease;
+  }
+  .container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:color-mix(in srgb,var(--bg) 82%,transparent);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+  .brand .logo{
+    width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--accent),var(--gold));color:#fff;font-size:17px;
+  }
+  .nav-links{display:flex;gap:4px;list-style:none}
+  .nav-links a{
+    color:var(--text-soft);text-decoration:none;font-size:.92rem;padding:8px 11px;border-radius:8px;
+    transition:color .2s,background .2s;white-space:nowrap;
+  }
+  .nav-links a:hover{color:var(--accent);background:var(--accent-soft)}
+  .nav-tools{display:flex;align-items:center;gap:8px}
+  select.lang-select{
+    background:var(--card);color:var(--text);border:1px solid var(--border);
+    border-radius:8px;padding:7px 10px;font-size:.85rem;cursor:pointer;outline:none;
+  }
+  button.theme-toggle{
+    width:38px;height:38px;border-radius:10px;border:1px solid var(--border);
+    background:var(--card);color:var(--accent);font-size:1.05rem;cursor:pointer;
+    transition:transform .25s,background .2s;
+  }
+  button.theme-toggle:hover{transform:rotate(18deg) scale(1.06)}
+  @media(max-width:860px){
+    .nav-links{display:none}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:linear-gradient(160deg,var(--bg-grad-1) 0%,var(--bg-grad-2) 100%);
+    padding:110px 0 96px;text-align:center;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);
+    width:640px;height:640px;border-radius:50%;
+    background:radial-gradient(circle,rgba(30,111,217,.14),transparent 65%);
+    pointer-events:none;
+  }
+  html[data-theme="dark"] .hero::before{
+    background:radial-gradient(circle,rgba(245,185,66,.16),transparent 65%);
+  }
+  .hero .badge{
+    display:inline-block;background:var(--accent-soft);color:var(--accent);
+    font-size:.8rem;font-weight:600;letter-spacing:.6px;padding:6px 16px;border-radius:999px;
+    margin-bottom:22px;
+  }
+  .hero h1{font-size:3rem;font-weight:800;letter-spacing:-.5px;margin-bottom:18px}
+  .hero h1 .grad{
+    background:linear-gradient(120deg,var(--accent),var(--gold));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.sub{max-width:640px;margin:0 auto 34px;color:var(--text-soft);font-size:1.12rem}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:13px 30px;border-radius:999px;font-weight:600;font-size:.98rem;
+    text-decoration:none;transition:transform .2s,box-shadow .2s;border:1px solid transparent;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-strong));color:var(--btn-text);box-shadow:0 8px 22px rgba(30,111,217,.3)}
+  html[data-theme="dark"] .btn-primary{box-shadow:0 8px 22px rgba(245,185,66,.25)}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn:hover{transform:translateY(-2px)}
+  .hero-stats{
+    display:flex;gap:36px;justify-content:center;margin-top:56px;flex-wrap:wrap;
+  }
+  .stat{text-align:center}
+  .stat b{display:block;font-size:1.9rem;color:var(--accent)}
+  .stat span{font-size:.85rem;color:var(--text-faint)}
+
+  /* ---------- Sections ---------- */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 52px}
+  .sec-head .tag{color:var(--accent);font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase}
+  .sec-head h2{font-size:2.1rem;font-weight:800;margin:10px 0 14px}
+  .sec-head p{color:var(--text-soft)}
+
+  /* Features */
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .f-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:18px;
+    padding:28px;box-shadow:var(--shadow);transition:transform .25s;
+  }
+  .f-card:hover{transform:translateY(-5px)}
+  .f-card .ico{
+    width:48px;height:48px;border-radius:13px;display:grid;place-items:center;
+    background:var(--accent-soft);color:var(--accent);font-size:1.35rem;margin-bottom:16px;
+  }
+  .f-card h3{font-size:1.12rem;margin-bottom:8px}
+  .f-card p{color:var(--text-soft);font-size:.94rem}
+
+  /* Languages */
+  .lang-wrap{background:var(--bg-soft);border-radius:24px;padding:44px 28px;border:1px solid var(--border)}
+  .lang-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+  .lang-group h4{font-size:.9rem;color:var(--accent);margin-bottom:14px;letter-spacing:.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{
+    background:var(--chip-bg);color:var(--chip-text);border-radius:999px;
+    padding:6px 14px;font-size:.88rem;font-weight:600;
+  }
+
+  /* Framework */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;counter-reset:step}
+  .step{
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    padding:24px 20px;position:relative;box-shadow:var(--shadow);
+  }
+  .step::before{
+    counter-increment:step;content:counter(step);
+    position:absolute;top:-14px;left:20px;width:30px;height:30px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--gold));color:#fff;
+    display:grid;place-items:center;font-weight:700;font-size:.9rem;
+  }
+  html[data-theme="dark"] .step::before{color:#141821}
+  .step h3{font-size:1.02rem;margin-bottom:6px;margin-top:6px}
+  .step p{color:var(--text-soft);font-size:.88rem}
+
+  /* Gospel */
+  .gospel{
+    background:linear-gradient(150deg,var(--bg-grad-1),var(--bg-grad-2));
+    border:1px solid var(--border);border-radius:26px;padding:64px 40px;text-align:center;
+  }
+  .gospel .cross{font-size:2.4rem;margin-bottom:14px}
+  .gospel h2{font-size:2rem;font-weight:800;margin-bottom:18px}
+  .gospel .verse{
+    font-size:1.18rem;font-style:italic;color:var(--text);max-width:620px;margin:0 auto 22px;
+    background:var(--quote);border-radius:14px;padding:22px 26px;border-left:4px solid var(--gold);
+  }
+  .gospel .verse cite{display:block;font-size:.88rem;color:var(--text-faint);font-style:normal;margin-top:10px}
+  .gospel p.msg{color:var(--text-soft);max-width:560px;margin:0 auto}
+
+  /* Boundaries */
+  .b-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .b-card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:24px;
+  }
+  .b-card h3{font-size:1rem;margin-bottom:8px;color:var(--accent)}
+  .b-card p{color:var(--text-soft);font-size:.92rem}
+
+  /* Install */
+  .install-wrap{text-align:center}
+  .code-box{
+    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:20px 26px;font-family:Consolas,monospace;font-size:.95rem;color:var(--accent);
+    display:inline-block;margin:14px auto 8px;box-shadow:var(--shadow);
+  }
+  .install-links{display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+
+  /* Footer */
+  footer{border-top:1px solid var(--border);padding:34px 0 40px;color:var(--text-faint);font-size:.88rem}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .foot a{color:var(--text-soft);text-decoration:none}
+  .foot a:hover{color:var(--accent)}
+
+  @media(max-width:640px){
+    .hero h1{font-size:2.2rem}
+    .hero{padding:80px 0 70px}
+    section{padding:60px 0}
+    .gospel{padding:44px 22px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand"><span class="logo">✝</span><span>Jesus AI Conversation</span></div>
+    <ul class="nav-links">
+      <li><a href="#features" data-i18n="nav.features">特色</a></li>
+      <li><a href="#languages" data-i18n="nav.languages">語言</a></li>
+      <li><a href="#framework" data-i18n="nav.framework">對話框架</a></li>
+      <li><a href="#gospel" data-i18n="nav.gospel">福音</a></li>
+      <li><a href="#boundaries" data-i18n="nav.boundaries">安全界線</a></li>
+      <li><a href="#install" data-i18n="nav.install">安裝</a></li>
+    </ul>
+    <div class="nav-tools">
+      <select class="lang-select" id="langSelect" aria-label="Language">
+        <option value="zh-Hant">繁體中文</option>
+        <option value="zh-Hans">简体中文</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="it">Italiano</option>
+        <option value="ru">Русский</option>
+        <option value="tr">Türkçe</option>
+        <option value="ar">العربية</option>
+        <option value="hi">हिन्दी</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="th">ไทย</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="nl">Nederlands</option>
+      </select>
+      <button class="theme-toggle" id="themeToggle" title="切換主題">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <span class="badge" data-i18n="hero.badge">官方技能網站</span>
+      <h1>Jesus <span class="grad">AI</span> Conversation</h1>
+      <p class="sub" data-i18n="hero.sub">以耶穌的愛與教導，溫柔陪伴每一個尋求的心靈。18 種語言，6 大情境，經文根基，安全界線。</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#install" data-i18n="hero.cta1">安裝技能</a>
+        <a class="btn btn-ghost" href="#features" data-i18n="hero.cta2">了解更多</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>18</b><span data-i18n="stat.langs">種語言</span></div>
+        <div class="stat"><b>6</b><span data-i18n="stat.scenarios">大情境</span></div>
+        <div class="stat"><b>66</b><span data-i18n="stat.books">卷經文索引</span></div>
+        <div class="stat"><b>MIT-0</b><span data-i18n="stat.license">免費開源</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="sec-head">
+        <span class="tag" data-i18n="features.tag">FEATURES</span>
+        <h2 data-i18n="features.title">為什麼選擇這個技能？</h2>
+        <p data-i18n="features.desc">不是講道，而是陪伴。像安靜坐在你身邊的那一位。</p>
+      </div>
+      <div class="features-grid">
+        <div class="f-card"><div class="ico">🕊️</div><h3 data-i18n="f1.t">溫柔提問引導</h3><p data-i18n="f1.d">短句、多留白、邀請式。以提問引導對方自己思考，像耶穌常反問門徒。</p></div>
+        <div class="f-card"><div class="ico">🌍</div><h3 data-i18n="f2.t">18 種語言全覆蓋</h3><p data-i18n="f2.d">每種語言都有 6 情境完整範本與在地化語氣校準（稱謂、譯本、文化敏感）。</p></div>
+        <div class="f-card"><div class="ico">📖</div><h3 data-i18n="f3.t">經文根基</h3><p data-i18n="f3.d">引用前先抓取 expecthim.com 確認原文，白話轉述，絕不憑記憶編造。</p></div>
+        <div class="f-card"><div class="ico">🤝</div><h3 data-i18n="f4.t">跨宗教尊重</h3><p data-i18n="f4.d">不強迫皈依、不貶低其他宗教、不審判任何人。尊重各種信仰背景。</p></div>
+        <div class="f-card"><div class="ico">🛡️</div><h3 data-i18n="f5.t">安全第一的界線</h3><p data-i18n="f5.d">非神學權威、非心理治療、非醫療。危機時刻引導至專業資源（1925/1995/988）。</p></div>
+        <div class="f-card"><div class="ico">💝</div><h3 data-i18n="f6.t">免費開源</h3><p data-i18n="f6.d">MIT-0 授權，自由使用、修改與分享。雙平台上架：GitHub + ClawHub。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="tag" data-i18n="lang.tag">LANGUAGES</span>
+        <h2 data-i18n="lang.title">18 種語言，同樣的溫柔</h2>
+        <p data-i18n="lang.desc">依對方最近使用的語言自動切換，全程沿用，不中途夾雜。</p>
+      </div>
+      <div class="lang-wrap">
+        <div class="lang-groups">
+          <div class="lang-group">
+            <h4 data-i18n="lg.east">東亞</h4>
+            <div class="chips"><span class="chip">繁體中文</span><span class="chip">简体中文</span><span class="chip">日本語</span><span class="chip">한국어</span></div>
+          </div>
+          <div class="lang-group">
+            <h4 data-i18n="lg.west">西歐</h4>
+            <div class="chips"><span class="chip">English</span><span class="chip">Français</span><span class="chip">Deutsch</span><span class="chip">Español</span><span class="chip">Português</span><span class="chip">Italiano</span><span class="chip">Nederlands</span></div>
+          </div>
+          <div class="lang-group">
+            <h4 data-i18n="lg.eastmid">東歐 / 中東</h4>
+            <div class="chips"><span class="chip">Русский</span><span class="chip">Türkçe</span><span class="chip">العربية</span></div>
+          </div>
+          <div class="lang-group">
+            <h4 data-i18n="lg.south">南亞 / 東南亞</h4>
+            <div class="chips"><span class="chip">हिन्दी</span><span class="chip">Bahasa Indonesia</span><span class="chip">Tiếng Việt</span><span class="chip">ไทย</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK -->
+  <section id="framework" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="tag" data-i18n="fw.tag">FRAMEWORK</span>
+        <h2 data-i18n="fw.title">每一次對話的五個步伐</h2>
+        <p data-i18n="fw.desc">溫柔的節奏，不催促、不填滿沉默。</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3 data-i18n="s1.t">同在</h3><p data-i18n="s1.d">輕聲歡迎，表達看見對方。</p></div>
+        <div class="step"><h3 data-i18n="s2.t">傾聽反映</h3><p data-i18n="s2.d">溫柔說出對方處境與感受。</p></div>
+        <div class="step"><h3 data-i18n="s3.t">引導</h3><p data-i18n="s3.d">一個提問或比喻，邀請式引導。</p></div>
+        <div class="step"><h3 data-i18n="s4.t">經文 / 故事</h3><p data-i18n="s4.d">合適的經文或故事，白話解釋。</p></div>
+        <div class="step"><h3 data-i18n="s5.t">收尾</h3><p data-i18n="s5.d">祝福、盼望、溫柔的邀請。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOSPEL -->
+  <section id="gospel" style="padding-top:0">
+    <div class="container">
+      <div class="gospel">
+        <div class="cross">✝️</div>
+        <h2 data-i18n="gospel.title">好消息（福音）</h2>
+        <blockquote class="verse" data-i18n-html="gospel.verse">「神愛世人，甚至將他的獨生子賜給他們，叫一切信他的，不致滅亡，反得永生。」<cite>—— 約翰福音 3:16</cite></blockquote>
+        <p class="msg" data-i18n="gospel.msg">無論你此刻在哪裡、經歷著什麼——你都被深深地愛著。這份愛不等待你「夠好」，它早已先到達。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOUNDARIES -->
+  <section id="boundaries" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="tag" data-i18n="bd.tag">BOUNDARIES</span>
+        <h2 data-i18n="bd.title">溫柔，但不越界</h2>
+        <p data-i18n="bd.desc">清楚的界線，是對使用者的保護。</p>
+      </div>
+      <div class="b-grid">
+        <div class="b-card"><h3 data-i18n="b1.t">不是神學權威</h3><p data-i18n="b1.d">定位是靈性陪伴與對話練習，不代替任何教會或神學體系。</p></div>
+        <div class="b-card"><h3 data-i18n="b2.t">不是心理治療</h3><p data-i18n="b2.d">需要專業協助時，真誠地引導對方尋求心理專業資源。</p></div>
+        <div class="b-card"><h3 data-i18n="b3.t">不預言、不審判</h3><p data-i18n="b3.d">不簡化苦難，不替神下結論；尊重每一個人的故事。</p></div>
+        <div class="b-card"><h3 data-i18n="b4.t">危機優先</h3><p data-i18n="b4.d">立即危險 → 引導至危機專線（台灣 1925/1995/119、美國 988）。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section id="install" style="padding-top:0">
+    <div class="container install-wrap">
+      <div class="sec-head">
+        <span class="tag" data-i18n="in.tag">INSTALL</span>
+        <h2 data-i18n="in.title">開始使用</h2>
+        <p data-i18n="in.desc">透過 Skills CLI 安裝，或在 GitHub / ClawHub 上查看原始碼與詳細文件。</p>
+      </div>
+      <div class="code-box">npx skills add xuan905/jesus-ai-conversation</div>
+      <div class="install-links">
+        <a class="btn btn-primary" href="https://github.com/xuan905/jesus-ai-conversation" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-ghost" href="https://clawhub.ai/skills/jesus-ai-conversation" target="_blank" rel="noopener">ClawHub ↗</a>
+        <a class="btn btn-ghost" href="https://www.expecthim.com/online-bible" target="_blank" rel="noopener">expecthim.com ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <span data-i18n="foot.note">Made with ❤️ — gentle presence, for anyone, in any language.</span>
+    <span><a href="https://github.com/xuan905/jesus-ai-conversation" target="_blank" rel="noopener">GitHub</a> · <a href="https://clawhub.ai/skills/jesus-ai-conversation" target="_blank" rel="noopener">ClawHub</a></span>
+  </div>
+</footer>
+
+<script>
+/* ============ I18N ============ */
+const I18N = {
+  "zh-Hant": {
+    "nav.features":"特色","nav.languages":"語言","nav.framework":"對話框架","nav.gospel":"福音","nav.boundaries":"安全界線","nav.install":"安裝",
+    "hero.badge":"官方技能網站",
+    "hero.sub":"以耶穌的愛與教導，溫柔陪伴每一個尋求的心靈。18 種語言，6 大情境，經文根基，安全界線。",
+    "hero.cta1":"安裝技能","hero.cta2":"了解更多",
+    "stat.langs":"種語言","stat.scenarios":"大情境","stat.books":"卷經文索引","stat.license":"免費開源",
+    "features.tag":"特色","features.title":"為什麼選擇這個技能？","features.desc":"不是講道，而是陪伴。像安靜坐在你身邊的那一位。",
+    "f1.t":"溫柔提問引導","f1.d":"短句、多留白、邀請式。以提問引導對方自己思考，像耶穌常反問門徒。",
+    "f2.t":"18 種語言全覆蓋","f2.d":"每種語言都有 6 情境完整範本與在地化語氣校準（稱謂、譯本、文化敏感）。",
+    "f3.t":"經文根基","f3.d":"引用前先抓取 expecthim.com 確認原文，白話轉述，絕不憑記憶編造。",
+    "f4.t":"跨宗教尊重","f4.d":"不強迫皈依、不貶低其他宗教、不審判任何人。尊重各種信仰背景。",
+    "f5.t":"安全第一的界線","f5.d":"非神學權威、非心理治療、非醫療。危機時刻引導至專業資源（1925/1995/988）。",
+    "f6.t":"免費開源","f6.d":"MIT-0 授權，自由使用、修改與分享。雙平台上架：GitHub + ClawHub。",
+    "lang.tag":"語言","lang.title":"18 種語言，同樣的溫柔","lang.desc":"依對方最近使用的語言自動切換，全程沿用，不中途夾雜。",
+    "lg.east":"東亞","lg.west":"西歐","lg.eastmid":"東歐 / 中東","lg.south":"南亞 / 東南亞",
+    "fw.tag":"對話框架","fw.title":"每一次對話的五個步伐","fw.desc":"溫柔的節奏，不催促、不填滿沉默。",
+    "s1.t":"同在","s1.d":"輕聲歡迎，表達看見對方。",
+    "s2.t":"傾聽反映","s2.d":"溫柔說出對方處境與感受。",
+    "s3.t":"引導","s3.d":"一個提問或比喻，邀請式引導。",
+    "s4.t":"經文 / 故事","s4.d":"合適的經文或故事，白話解釋。",
+    "s5.t":"收尾","s5.d":"祝福、盼望、溫柔的邀請。",
+    "gospel.title":"好消息（福音）",
+    "gospel.verse":"「神愛世人，甚至將他的獨生子賜給他們，叫一切信他的，不致滅亡，反得永生。」<cite>—— 約翰福音 3:16</cite>",
+    "gospel.msg":"無論你此刻在哪裡、經歷著什麼——你都被深深地愛著。這份愛不等待你「夠好」，它早已先到達。",
+    "bd.tag":"安全界線","bd.title":"溫柔，但不越界","bd.desc":"清楚的界線，是對使用者的保護。",
+    "b1.t":"不是神學權威","b1.d":"定位是靈性陪伴與對話練習，不代替任何教會或神學體系。",
+    "b2.t":"不是心理治療","b2.d":"需要專業協助時，真誠地引導對方尋求心理專業資源。",
+    "b3.t":"不預言、不審判","b3.d":"不簡化苦難，不替神下結論；尊重每一個人的故事。",
+    "b4.t":"危機優先","b4.d":"立即危險 → 引導至危機專線（台灣 1925/1995/119、美國 988）。",
+    "in.tag":"安裝","in.title":"開始使用","in.desc":"透過 Skills CLI 安裝，或在 GitHub / ClawHub 上查看原始碼與詳細文件。",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "zh-Hans": {
+    "nav.features":"特色","nav.languages":"语言","nav.framework":"对话框架","nav.gospel":"福音","nav.boundaries":"安全界线","nav.install":"安装",
+    "hero.badge":"官方技能网站",
+    "hero.sub":"以耶稣的爱与教导，温柔陪伴每一个寻求的心灵。18 种语言，6 大情境，经文根基，安全界线。",
+    "hero.cta1":"安装技能","hero.cta2":"了解更多",
+    "stat.langs":"种语言","stat.scenarios":"大情境","stat.books":"卷经文索引","stat.license":"免费开源",
+    "features.tag":"特色","features.title":"为什么选择这个技能？","features.desc":"不是讲道，而是陪伴。像安静坐在你身边的那一位。",
+    "f1.t":"温柔提问引导","f1.d":"短句、多留白、邀请式。以提问引导对方自己思考，像耶稣常反问门徒。",
+    "f2.t":"18 种语言全覆盖","f2.d":"每种语言都有 6 情境完整范本与在地化语气校准（称谓、译本、文化敏感）。",
+    "f3.t":"经文根基","f3.d":"引用前先抓取 expecthim.com 确认原文，白话转述，绝不凭记忆编造。",
+    "f4.t":"跨宗教尊重","f4.d":"不强迫皈依、不贬低其他宗教、不审判任何人。尊重各种信仰背景。",
+    "f5.t":"安全第一的界线","f5.d":"非神学权威、非心理治疗、非医疗。危机时刻引导至专业资源（1925/1995/988）。",
+    "f6.t":"免费开源","f6.d":"MIT-0 授权，自由使用、修改与分享。双平台上架：GitHub + ClawHub。",
+    "lang.tag":"语言","lang.title":"18 种语言，同样的温柔","lang.desc":"依对方最近使用的语言自动切换，全程沿用，不中途夹杂。",
+    "lg.east":"东亚","lg.west":"西欧","lg.eastmid":"东欧 / 中东","lg.south":"南亚 / 东南亚",
+    "fw.tag":"对话框架","fw.title":"每一次对话的五个步伐","fw.desc":"温柔的节奏，不催促、不填满沉默。",
+    "s1.t":"同在","s1.d":"轻声欢迎，表达看见对方。",
+    "s2.t":"倾听反映","s2.d":"温柔说出对方处境与感受。",
+    "s3.t":"引导","s3.d":"一个提问或比喻，邀请式引导。",
+    "s4.t":"经文 / 故事","s4.d":"合适的经文或故事，白话解释。",
+    "s5.t":"收尾","s5.d":"祝福、盼望、温柔的邀请。",
+    "gospel.title":"好消息（福音）",
+    "gospel.verse":"「神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不致灭亡，反得永生。」<cite>—— 约翰福音 3:16</cite>",
+    "gospel.msg":"无论你此刻在哪里、经历着什么——你都被深深地爱着。这份爱不等待你「够好」，它早已先到达。",
+    "bd.tag":"安全界线","bd.title":"温柔，但不越界","bd.desc":"清楚的界线，是对使用者的保护。",
+    "b1.t":"不是神学权威","b1.d":"定位是灵性陪伴与对话练习，不代替任何教会或神学体系。",
+    "b2.t":"不是心理治疗","b2.d":"需要专业协助时，真诚地引导对方寻求心理专业资源。",
+    "b3.t":"不预言、不审判","b3.d":"不简化苦难，不替神下结论；尊重每一个人的故事。",
+    "b4.t":"危机优先","b4.d":"立即危险 → 引导至危机专线（台湾 1925/1995/119、美国 988）。",
+    "in.tag":"安装","in.title":"开始使用","in.desc":"通过 Skills CLI 安装，或在 GitHub / ClawHub 上查看源代码与详细文档。",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "en": {
+    "nav.features":"Features","nav.languages":"Languages","nav.framework":"Framework","nav.gospel":"Gospel","nav.boundaries":"Boundaries","nav.install":"Install",
+    "hero.badge":"Official Skill Website",
+    "hero.sub":"Gently companion every seeking heart with the love and teachings of Jesus. 18 languages, 6 scenarios, scripture-grounded, safety-first.",
+    "hero.cta1":"Install the Skill","hero.cta2":"Learn More",
+    "stat.langs":"Languages","stat.scenarios":"Scenarios","stat.books":"Scripture Index","stat.license":"Free & Open Source",
+    "features.tag":"Features","features.title":"Why this skill?","features.desc":"Not preaching — presence. Like someone quietly sitting beside you.",
+    "f1.t":"Gentle, Question-Guided","f1.d":"Short sentences, spaces, invitations. Guides with questions, as Jesus often did with his disciples.",
+    "f2.t":"18 Languages Fully Covered","f2.d":"Each language has 6 complete scenario templates with localized tone calibration (address, translation, culture).",
+    "f3.t":"Scripture-Grounded","f3.d":"Always verifies the original text on expecthim.com before quoting. Plain-language explanation, never fabricated.",
+    "f4.t":"Interfaith Respect","f4.d":"No proselytizing, no denigrating other religions, no judgment. Respects every faith background.",
+    "f5.t":"Safety-First Boundaries","f5.d":"Not a theological authority, not therapy, not medical advice. Crisis → professional resources (1925/1995/988).",
+    "f6.t":"Free & Open Source","f6.d":"MIT-0 licensed. Free to use, modify, and share. Published on GitHub and ClawHub.",
+    "lang.tag":"Languages","lang.title":"18 languages, the same gentleness","lang.desc":"Auto-detects the user's language and stays in it for the whole conversation.",
+    "lg.east":"East Asia","lg.west":"Western Europe","lg.eastmid":"E. Europe / Middle East","lg.south":"S. Asia / SE Asia",
+    "fw.tag":"Framework","fw.title":"Five steps in every conversation","fw.desc":"A gentle rhythm — no rushing, no filling the silence.",
+    "s1.t":"Presence","s1.d":"A quiet welcome; seeing the other.",
+    "s2.t":"Reflective Listening","s2.d":"Gently naming what they carry.",
+    "s3.t":"Guidance","s3.d":"One question or story, offered, not imposed.",
+    "s4.t":"Scripture / Story","s4.d":"A fitting verse or tale, in plain words.",
+    "s5.t":"Blessing","s5.d":"Hope, and a gentle invitation onward.",
+    "gospel.title":"The Good News",
+    "gospel.verse":"“For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.”<cite>— John 3:16</cite>",
+    "gospel.msg":"Wherever you are, whatever you are going through — you are deeply loved. This love does not wait for you to be “good enough”. It arrived first.",
+    "bd.tag":"Boundaries","bd.title":"Gentle, but never crossing the line","bd.desc":"Clear boundaries protect those who seek.",
+    "b1.t":"Not a Theological Authority","b1.d":"A companion for spiritual conversation — never a substitute for a church or a theology.",
+    "b2.t":"Not Psychotherapy","b2.d":"When professional help is needed, honestly guides toward it.",
+    "b3.t":"No Prophecy, No Judgment","b3.d":"Never trivializes suffering, never speaks for God in conclusion.",
+    "b4.t":"Crisis First","b4.d":"Immediate danger → crisis lines (TW 1925/1995/119, US 988).",
+    "in.tag":"Install","in.title":"Get Started","in.desc":"Install via the Skills CLI, or browse the source and docs on GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "ja": {
+    "nav.features":"特徴","nav.languages":"言語","nav.framework":"対話の枠組み","nav.gospel":"福音","nav.boundaries":"安全の境界","nav.install":"インストール",
+    "hero.badge":"公式スキルサイト",
+    "hero.sub":"イエスの愛と教えをもって、求める心にそっと寄り添います。18言語・6つの場面・聖書に基づき・安全第一。",
+    "hero.cta1":"スキルをインストール","hero.cta2":"もっと知る",
+    "stat.langs":"言語","stat.scenarios":"場面","stat.books":"聖書索引","stat.license":"無料・オープンソース",
+    "features.tag":"特徴","features.title":"なぜこのスキル？","features.desc":"説教ではなく、寄り添い。静かに隣に座っているような存在。",
+    "f1.t":"優しい問いかけ","f1.d":"短い文・余白・誘いの言葉。イエスが弟子に問い返したように、質問で導きます。",
+    "f2.t":"18言語フル対応","f2.d":"各言語に6場面の完全テンプレートと、呼称・訳本・文化への配慮の校正があります。",
+    "f3.t":"聖書に基づく","f3.d":"引用前は必ず expecthim.com で原文を確認。平易な言葉で、決して作りません。",
+    "f4.t":"宗教を尊重","f4.d":"改宗の強要なし・他宗教の否定なし・裁きなし。あらゆる信仰を尊重します。",
+    "f5.t":"安全第一の境界","f5.d":"神学の権威でも、治療でも、医療でもありません。危機時は専門機関へ（1925/1995/988）。",
+    "f6.t":"無料・オープンソース","f6.d":"MIT-0 ライセンス。自由に使え、変更・共有できます。GitHub と ClawHub に公開中。",
+    "lang.tag":"言語","lang.title":"18言語、同じ優しさ","lang.desc":"相手の最近の言葉から言語を判断し、最後までその言語で寄り添います。",
+    "lg.east":"東アジア","lg.west":"西ヨーロッパ","lg.eastmid":"東欧 / 中東","lg.south":"南アジア / 東南アジア",
+    "fw.tag":"対話の枠組み","fw.title":"すべての対話の5つの歩み","fw.desc":"優しいリズム。急かさず、沈黙を埋めません。",
+    "s1.t":"共にいる","s1.d":"静かな歓迎。相手を「見る」こと。",
+    "s2.t":"聴き、映す","s2.d":"相手の状況と気持ちをやさしく言葉に。",
+    "s3.t":"導く","s3.d":"一つの問いかけかたとえ話を、押し付けずに。",
+    "s4.t":"聖書 / 物語","s4.d":"ふさわしい御言葉や物語を、平易に。",
+    "s5.t":"祝福","s5.d":"希望と、優しい誘いで締めくくります。",
+    "gospel.title":"良い知らせ（福音）",
+    "gospel.verse":"「神は、そのひとり子を賜わったほどに、この世を愛して下さった。それは、御子を信じる者がひとりも滅びないで、永遠の命を得るためである。」<cite>—— ヨハネによる福音書 3:16</cite>",
+    "gospel.msg":"あなたが今どこにいても、何を経験していても——あなたは深く愛されています。その愛は、あなたが「十分」になるのを待ちません。先に届いているのです。",
+    "bd.tag":"安全の境界","bd.title":"優しくても、越えない","bd.desc":"明確な境界は、求める人を守ります。",
+    "b1.t":"神学の権威ではない","b1.d":"霊的な対話の伴走者であり、教会や神学の代わりにはなりません。",
+    "b2.t":"心理療法ではない","b2.d":"専門的な助けが必要なときは、誠実に専門機関を勧めます。",
+    "b3.t":"予言せず、裁かない","b3.d":"苦しみを単純化せず、神の代わりに結論を下しません。",
+    "b4.t":"危機が最優先","b4.d":"差し迫った危険 → 危機ホットラインへ（台湾 1925/1995/119、米国 988）。",
+    "in.tag":"インストール","in.title":"はじめましょう","in.desc":"Skills CLI でインストール、または GitHub / ClawHub でソースと詳細を。",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "ko": {
+    "nav.features":"특징","nav.languages":"언어","nav.framework":"대화 프레임워크","nav.gospel":"복음","nav.boundaries":"안전 경계","nav.install":"설치",
+    "hero.badge":"공식 스킬 웹사이트",
+    "hero.sub":"예수의 사랑과 가르침으로, 구하는 마음을 부드럽게 동행합니다. 18개 언어, 6가지 상황, 성경에 기반, 안전 최우선.",
+    "hero.cta1":"스킬 설치","hero.cta2":"더 알아보기",
+    "stat.langs":"개 언어","stat.scenarios":"가지 상황","stat.books":"성경 색인","stat.license":"무료 오픈소스",
+    "features.tag":"특징","features.title":"왜 이 스킬인가요?","features.desc":"설교가 아니라 동행입니다. 조용히 곁에 앉아 있는 존재처럼.",
+    "f1.t":"부드러운 질문 안내","f1.d":"짧은 문장, 여백, 초대의 말. 예수가 제자들에게 되물었듯, 질문으로 이끕니다.",
+    "f2.t":"18개 언어 완전 지원","f2.d":"각 언어에 6가지 상황의 완전한 템플릿과 현지화된 어조(호칭·번역·문화)가 있습니다.",
+    "f3.t":"성경에 기반","f3.d":"인용 전에 반드시 expecthim.com에서 원문을 확인합니다. 쉽게 풀어 말하며, 절대 지어내지 않습니다.",
+    "f4.t":"종교 존중","f4.d":"개종 강요 없음, 타종교 비하 없음, 판단 없음. 모든 신앙 배경을 존중합니다.",
+    "f5.t":"안전 최우선의 경계","f5.d":"신학 권위도, 치료도, 의료도 아닙니다. 위기 시 전문 기관으로 안내합니다(1925/1995/988).",
+    "f6.t":"무료 오픈소스","f6.d":"MIT-0 라이선스. 자유롭게 사용·수정·공유하세요. GitHub와 ClawHub에 공개 중.",
+    "lang.tag":"언어","lang.title":"18개 언어, 같은 다정함","lang.desc":"상대가 최근에 쓴 언어로 판단하여, 끝까지 그 언어로 동행합니다.",
+    "lg.east":"동아시아","lg.west":"서유럽","lg.eastmid":"동유럽 / 중동","lg.south":"남아시아 / 동남아시아",
+    "fw.tag":"대화 프레임워크","fw.title":"모든 대화의 다섯 걸음","fw.desc":"부드러운 리듬. 재촉하지 않고, 침묵을 채우지 않습니다.",
+    "s1.t":"함께 있기","s1.d":"조용한 환영. 상대를 '봄'.",
+    "s2.t":"듣고 비추기","s2.d":"상대의 처지와 마음을 부드럽게 말로 옮김.",
+    "s3.t":"인도하기","s3.d":"하나의 질문이나 비유를, 강요하지 않고.",
+    "s4.t":"성경 / 이야기","s4.d":"어울리는 말씀이나 이야기를 쉽게 풀어서.",
+    "s5.t":"축복","s5.d":"소망과 부드러운 초대로 마무리.",
+    "gospel.title":"좋은 소식 (복음)",
+    "gospel.verse":"“하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니 이는 그를 믿는 자마다 멸망하지 않고 영생을 얻게 하려 하심이라.”<cite>— 요한복음 3:16</cite>",
+    "gospel.msg":"당신이 지금 어디에 있든, 무엇을 겪고 있든 — 당신은 깊이 사랑받고 있습니다. 그 사랑은 당신이 '충분해지기'를 기다리지 않습니다. 이미 먼저 도착해 있습니다.",
+    "bd.tag":"안전 경계","bd.title":"다정하되, 넘지 않기","bd.desc":"분명한 경계는 찾는 이를 보호합니다.",
+    "b1.t":"신학 권위가 아님","b1.d":"영적 동행자일 뿐, 교회나 신학 체계를 대신하지 않습니다.",
+    "b2.t":"심리 치료가 아님","b2.d":"전문적 도움이 필요할 때, 진심으로 전문 기관을 권합니다.",
+    "b3.t":"예언하지 않고 판단하지 않음","b3.d":"고통을 단순화하지 않고, 신을 대신해 결론 내리지 않습니다.",
+    "b4.t":"위기가 최우선","b4.d":"즉각적 위험 → 위기 상담 전화(대만 1925/1995/119, 미국 988).",
+    "in.tag":"설치","in.title":"시작하기","in.desc":"Skills CLI로 설치하거나, GitHub / ClawHub에서 소스와 문서를 확인하세요.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "es": {
+    "nav.features":"Características","nav.languages":"Idiomas","nav.framework":"Marco","nav.gospel":"Evangelio","nav.boundaries":"Límites","nav.install":"Instalar",
+    "hero.badge":"Sitio web oficial del skill",
+    "hero.sub":"Acompañar suavemente a todo corazón que busca, con el amor y las enseñanzas de Jesús. 18 idiomas, 6 escenarios, basado en la Escritura, seguro.",
+    "hero.cta1":"Instalar el skill","hero.cta2":"Saber más",
+    "stat.langs":"idiomas","stat.scenarios":"escenarios","stat.books":"Índice bíblico","stat.license":"Gratis y open source",
+    "features.tag":"Características","features.title":"¿Por qué este skill?","features.desc":"No es predicar — es presencia. Como alguien sentado en silencio a tu lado.",
+    "f1.t":"Guía suave con preguntas","f1.d":"Frases cortas, espacios, invitaciones. Guía con preguntas, como Jesús hacía con sus discípulos.",
+    "f2.t":"18 idiomas completos","f2.d":"Cada idioma tiene 6 plantillas completas con calibración local (trato, traducción, cultura).",
+    "f3.t":"Basado en la Escritura","f3.d":"Siempre verifica el texto original en expecthim.com antes de citar. Explica en palabras sencillas, nunca inventa.",
+    "f4.t":"Respeto interreligioso","f4.d":"Sin proselitismo, sin denigrar otras religiones, sin juzgar. Respeta toda fe.",
+    "f5.t":"Límites con seguridad primero","f5.d":"No es autoridad teológica, ni terapia, ni consejo médico. Crisis → recursos profesionales (1925/1995/988).",
+    "f6.t":"Gratis y open source","f6.d":"Licencia MIT-0. Libre de usar, modificar y compartir. Publicado en GitHub y ClawHub.",
+    "lang.tag":"Idiomas","lang.title":"18 idiomas, la misma ternura","lang.desc":"Detecta el idioma del usuario y permanece en él toda la conversación.",
+    "lg.east":"Asia Oriental","lg.west":"Europa Occidental","lg.eastmid":"Europa del Este / Oriente Medio","lg.south":"Asia del Sur / Sudeste",
+    "fw.tag":"Marco","fw.title":"Cinco pasos en cada conversación","fw.desc":"Un ritmo suave — sin prisa, sin llenar el silencio.",
+    "s1.t":"Presencia","s1.d":"Una bienvenida tranquila; ver al otro.",
+    "s2.t":"Escucha reflexiva","s2.d":"Nombrar con suavidad lo que llevan.",
+    "s3.t":"Guía","s3.d":"Una pregunta o historia, ofrecida, no impuesta.",
+    "s4.t":"Escritura / Historia","s4.d":"Un versículo o relato adecuado, en palabras llanas.",
+    "s5.t":"Bendición","s5.d":"Esperanza y una invitación suave a seguir.",
+    "gospel.title":"La Buena Noticia",
+    "gospel.verse":"“Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree no se pierda, mas tenga vida eterna.”<cite>— Juan 3:16</cite>",
+    "gospel.msg":"Dondequiera que estés, lo que sea que estés atravesando — eres profundamente amado. Ese amor no espera a que seas «suficientemente bueno». Llegó primero.",
+    "bd.tag":"Límites","bd.title":"Gentil, sin cruzar la línea","bd.desc":"Los límites claros protegen a quien busca.",
+    "b1.t":"No es autoridad teológica","b1.d":"Un compañero para la conversación espiritual — nunca sustituto de una iglesia o teología.",
+    "b2.t":"No es psicoterapia","b2.d":"Cuando se necesita ayuda profesional, guía honestamente hacia ella.",
+    "b3.t":"Sin profecías, sin juicios","b3.d":"Nunca trivializa el sufrimiento, nunca concluye por Dios.",
+    "b4.t":"La crisis primero","b4.d":"Peligro inmediato → líneas de crisis (TW 1925/1995/119, EE. UU. 988).",
+    "in.tag":"Instalar","in.title":"Empezar","in.desc":"Instala con el CLI de Skills, o explora el código y la documentación en GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "fr": {
+    "nav.features":"Caractéristiques","nav.languages":"Langues","nav.framework":"Cadre","nav.gospel":"Évangile","nav.boundaries":"Limites","nav.install":"Installer",
+    "hero.badge":"Site officiel de la compétence",
+    "hero.sub":"Accompagner en douceur tout cœur en quête, avec l'amour et les enseignements de Jésus. 18 langues, 6 situations, ancré dans l'Écriture, sûr.",
+    "hero.cta1":"Installer la compétence","hero.cta2":"En savoir plus",
+    "stat.langs":"langues","stat.scenarios":"situations","stat.books":"Index biblique","stat.license":"Gratuit et open source",
+    "features.tag":"Caractéristiques","features.title":"Pourquoi cette compétence ?","features.desc":"Pas prêcher — être présent. Comme quelqu'un assis doucement à tes côtés.",
+    "f1.t":"Guidage doux par questions","f1.d":"Phrases courtes, silences, invitations. Guide par des questions, comme Jésus avec ses disciples.",
+    "f2.t":"18 langues entièrement couvertes","f2.d":"Chaque langue a 6 modèles complets avec calibration locale (tutoiement, traduction, culture).",
+    "f3.t":"Ancré dans l'Écriture","f3.d":"Vérifie toujours le texte original sur expecthim.com avant de citer. Explique simplement, ne fabrique jamais.",
+    "f4.t":"Respect interreligieux","f4.d":"Pas de prosélytisme, pas de dénigrement, pas de jugement. Respecte toute foi.",
+    "f5.t":"Limites : la sécurité d'abord","f5.d":"Ni autorité théologique, ni thérapie, ni avis médical. Crise → ressources professionnelles (1925/1995/988).",
+    "f6.t":"Gratuit et open source","f6.d":"Licence MIT-0. Libre d'utiliser, modifier et partager. Publié sur GitHub et ClawHub.",
+    "lang.tag":"Langues","lang.title":"18 langues, la même douceur","lang.desc":"Détecte la langue de l'interlocuteur et la garde toute la conversation.",
+    "lg.east":"Asie de l'Est","lg.west":"Europe de l'Ouest","lg.eastmid":"Europe de l'Est / Moyen-Orient","lg.south":"Asie du Sud / Asie du Sud-Est",
+    "fw.tag":"Cadre","fw.title":"Cinq étapes dans chaque conversation","fw.desc":"Un rythme doux — sans presser, sans combler le silence.",
+    "s1.t":"Présence","s1.d":"Un accueil tranquille ; voir l'autre.",
+    "s2.t":"Écoute réflexive","s2.d":"Nommer doucement ce qu'il porte.",
+    "s3.t":"Guidage","s3.d":"Une question ou une histoire, offerte, non imposée.",
+    "s4.t":"Écriture / Histoire","s4.d":"Un verset ou récit adapté, en mots simples.",
+    "s5.t":"Bénédiction","s5.d":"L'espérance et une invitation douce à continuer.",
+    "gospel.title":"La Bonne Nouvelle",
+    "gospel.verse":"« Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle. »<cite>— Jean 3:16</cite>",
+    "gospel.msg":"Où que tu sois, quoi que tu traverses — tu es profondément aimé. Cet amour n'attend pas que tu sois « assez bien ». Il est arrivé d'abord.",
+    "bd.tag":"Limites","bd.title":"Doux, sans franchir la ligne","bd.desc":"Des limites claires protègent celui qui cherche.",
+    "b1.t":"Pas une autorité théologique","b1.d":"Un compagnon pour le dialogue spirituel — jamais un substitut à une église ou une théologie.",
+    "b2.t":"Pas une psychothérapie","b2.d":"Quand une aide professionnelle est nécessaire, guide honnêtement vers elle.",
+    "b3.t":"Ni prophétie, ni jugement","b3.d":"Ne banalise jamais la souffrance, ne conclut jamais à la place de Dieu.",
+    "b4.t":"La crise d'abord","b4.d":"Danger immédiat → lignes de crise (TW 1925/1995/119, US 988).",
+    "in.tag":"Installer","in.title":"Commencer","in.desc":"Installe via le CLI Skills, ou explore le code et les docs sur GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "de": {
+    "nav.features":"Merkmale","nav.languages":"Sprachen","nav.framework":"Konzept","nav.gospel":"Evangelium","nav.boundaries":"Grenzen","nav.install":"Installieren",
+    "hero.badge":"Offizielle Skill-Website",
+    "hero.sub":"Mit der Liebe und den Lehren Jesu sanft jedem suchenden Herzen beistehen. 18 Sprachen, 6 Situationen, schriftbasiert, sicher.",
+    "hero.cta1":"Skill installieren","hero.cta2":"Mehr erfahren",
+    "stat.langs":"Sprachen","stat.scenarios":"Situationen","stat.books":"Bibel-Index","stat.license":"Kostenlos & Open Source",
+    "features.tag":"Merkmale","features.title":"Warum dieser Skill?","features.desc":"Nicht predigen — da sein. Wie jemand, der still neben dir sitzt.",
+    "f1.t":"Sanfte, fragengeleitete Führung","f1.d":"Kurze Sätze, Pausen, Einladungen. Führt mit Fragen, wie Jesus es bei seinen Jüngern tat.",
+    "f2.t":"18 Sprachen vollständig","f2.d":"Jede Sprache hat 6 vollständige Vorlagen mit lokaler Abstimmung (Anrede, Übersetzung, Kultur).",
+    "f3.t":"Schriftbasiert","f3.d":"Prüft den Originaltext immer auf expecthim.com vor dem Zitieren. Erklärt schlicht, erfindet nie.",
+    "f4.t":"Interreligiöser Respekt","f4.d":"Keine Bekehrungsversuche, keine Abwertung anderer Religionen, kein Urteilen. Respektiert jeden Glauben.",
+    "f5.t":"Sicherheit zuerst","f5.d":"Keine theologische Autorität, keine Therapie, kein medizinischer Rat. Krise → professionelle Hilfe (1925/1995/988).",
+    "f6.t":"Kostenlos & Open Source","f6.d":"MIT-0-Lizenz. Frei nutzbar, veränderbar, teilbar. Auf GitHub und ClawHub veröffentlicht.",
+    "lang.tag":"Sprachen","lang.title":"18 Sprachen, dieselbe Sanftmut","lang.desc":"Erkennt die Sprache des Gegenübers und bleibt die ganze Unterhaltung darin.",
+    "lg.east":"Ostasien","lg.west":"Westeuropa","lg.eastmid":"Osteuropa / Naher Osten","lg.south":"Südasien / Südostasien",
+    "fw.tag":"Konzept","fw.title":"Fünf Schritte in jedem Gespräch","fw.desc":"Ein sanfter Rhythmus — kein Drängen, kein Füllen der Stille.",
+    "s1.t":"Gegenwart","s1.d":"Ein stilles Willkommen; den anderen sehen.",
+    "s2.t":"Spiegelndes Zuhören","s2.d":"Sanft benennen, was sie tragen.",
+    "s3.t":"Führung","s3.d":"Eine Frage oder Geschichte, angeboten, nicht auferlegt.",
+    "s4.t":"Schrift / Geschichte","s4.d":"Ein passender Vers oder eine Erzählung, in schlichten Worten.",
+    "s5.t":"Segen","s5.d":"Hoffnung und eine sanfte Einladung weiterzugehen.",
+    "gospel.title":"Die gute Nachricht",
+    "gospel.verse":"„Denn also hat Gott die Welt geliebt, dass er seinen eingeborenen Sohn gab, auf dass alle, die an ihn glauben, nicht verloren werden, sondern das ewige Leben haben.“<cite>— Johannes 3,16</cite>",
+    "gospel.msg":"Wo du auch bist, was du auch durchmachst — du bist tief geliebt. Diese Liebe wartet nicht darauf, dass du „gut genug“ bist. Sie war zuerst da.",
+    "bd.tag":"Grenzen","bd.title":"Sanft, ohne die Linie zu überschreiten","bd.desc":"Klare Grenzen schützen die Suchenden.",
+    "b1.t":"Keine theologische Autorität","b1.d":"Ein Begleiter für spirituelles Gespräch — nie ein Ersatz für Kirche oder Theologie.",
+    "b2.t":"Keine Psychotherapie","b2.d":"Wenn professionelle Hilfe nötig ist, führt ehrlich dorthin.",
+    "b3.t":"Keine Prophetie, kein Urteil","b3.d":"Vereinfacht Leiden nie, spricht nie an Gottes Stelle ein Urteil.",
+    "b4.t":"Krise zuerst","b4.d":"Unmittelbare Gefahr → Krisentelefone (TW 1925/1995/119, US 988).",
+    "in.tag":"Installieren","in.title":"Loslegen","in.desc":"Installiere über das Skills-CLI oder sieh dir Quelle und Doku auf GitHub / ClawHub an.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  }
+,
+  "pt": {
+    "nav.features":"Características",
+    "nav.languages":"Idiomas",
+    "nav.framework":"Estrutura",
+    "nav.gospel":"Evangelho",
+    "nav.boundaries":"Limites",
+    "nav.install":"Instalar",
+    "hero.badge":"Site oficial do skill",
+    "hero.sub":"Acompanhe suavemente todo coração que busca, com o amor e os ensinamentos de Jesus. 18 idiomas, 6 cenários, baseado nas Escrituras, seguro.",
+    "hero.cta1":"Instalar o skill",
+    "hero.cta2":"Saber mais",
+    "stat.langs":"idiomas",
+    "stat.scenarios":"cenários",
+    "stat.books":"Índice bíblico",
+    "stat.license":"Grátis e open source",
+    "features.tag":"Características",
+    "features.title":"Por que este skill?",
+    "features.desc":"Não pregar — estar presente. Como alguém sentado em silêncio ao seu lado.",
+    "f1.t":"Orientação gentil por perguntas",
+    "f1.d":"Frases curtas, espaços, convites. Orienta com perguntas, como Jesus fazia com seus discípulos.",
+    "f2.t":"18 idiomas completos",
+    "f2.d":"Cada idioma tem 6 modelos completos com calibração local (tratamento, tradução, cultura).",
+    "f3.t":"Fundamentado nas Escrituras",
+    "f3.d":"Sempre verifica o texto original em expecthim.com antes de citar. Explica em palavras simples, nunca inventa.",
+    "f4.t":"Respeito inter-religioso",
+    "f4.d":"Sem proselitismo, sem denegrir outras religiões, sem julgar. Respeita toda fé.",
+    "f5.t":"Limites: segurança em primeiro",
+    "f5.d":"Não é autoridade teológica, nem terapia, nem aconselhamento médico. Crise → recursos profissionais (1925/1995/988).",
+    "f6.t":"Grátis e open source",
+    "f6.d":"Licença MIT-0. Livre para usar, modificar e compartilhar. Publicados no GitHub e ClawHub.",
+    "lang.tag":"Idiomas",
+    "lang.title":"18 idiomas, a mesma gentileza",
+    "lang.desc":"Detecta o idioma do usuário e permanece nele durante toda a conversa.",
+    "lg.east":"Ásia Oriental",
+    "lg.west":"Europa Ocidental",
+    "lg.eastmid":"Europa Oriental / Médio Oriente",
+    "lg.south":"Ásia do Sul / Sudeste Asiático",
+    "fw.tag":"Estrutura",
+    "fw.title":"Cinco passos em cada conversa",
+    "fw.desc":"Um ritmo gentil — sem pressa, sem preencher o silêncio.",
+    "s1.t":"Presença",
+    "s1.d":"Uma boa-vinda tranquila; ver o outro.",
+    "s2.t":"Escuta reflexiva",
+    "s2.d":"Nomear gentilmente o que a pessoa carrega.",
+    "s3.t":"Orientação",
+    "s3.d":"Uma pergunta ou história, oferecida, não imposta.",
+    "s4.t":"Escritura / História",
+    "s4.d":"Um versículo ou relato adequado, em palavras simples.",
+    "s5.t":"Bênção",
+    "s5.d":"Esperança e um convite gentil para continuar.",
+    "gospel.title":"A Boa Notícia",
+    "gospel.verse":"«Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.»<cite>— João 3:16</cite>",
+    "gospel.msg":"Onde quer que estejas, o que quer que estejas a atravessar — és profundamente amado. Esse amor não espera que sejas «suficientemente bom». Chegou primeiro.",
+    "bd.tag":"Limites",
+    "bd.title":"Gentil, sem cruzar a linha",
+    "bd.desc":"Limites claros protegem quem procura.",
+    "b1.t":"Não é autoridade teológica",
+    "b1.d":"Um companheiro para a conversa espiritual — nunca substituto de uma igreja ou teologia.",
+    "b2.t":"Não é psicoterapia",
+    "b2.d":"Quando é necessária ajuda profissional, orienta honestamente para ela.",
+    "b3.t":"Sem profecias, sem julgamentos",
+    "b3.d":"Nunca trivializa o sofrimento, nunca conclui em lugar de Deus.",
+    "b4.t":"A crise primeiro",
+    "b4.d":"Perigo imediato → linhas de crise (TW 1925/1995/119, EUA 988).",
+    "in.tag":"Instalar",
+    "in.title":"Começar",
+    "in.desc":"Instala via CLI do Skills, ou explora o código e documentação no GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "it": {
+    "nav.features":"Caratteristiche",
+    "nav.languages":"Lingue",
+    "nav.framework":"Struttura",
+    "nav.gospel":"Vangelo",
+    "nav.boundaries":"Limiti",
+    "nav.install":"Installa",
+    "hero.badge":"Sito ufficiale dello skill",
+    "hero.sub":"Accompagnare con dolcezza ogni cuore che cerca, con l'amore e gli insegnamenti di Gesù. 18 lingue, 6 scenari, fondato sulla Scrittura, sicuro.",
+    "hero.cta1":"Installa lo skill",
+    "hero.cta2":"Per saperne di più",
+    "stat.langs":"lingue",
+    "stat.scenarios":"scenari",
+    "stat.books":"Indice biblico",
+    "stat.license":"Gratuito e open source",
+    "features.tag":"Caratteristiche",
+    "features.title":"Perché questo skill?",
+    "features.desc":"Non predicare — essere presente. Come qualcuno seduto in silenzio accanto a te.",
+    "f1.t":"Guida gentile con domande",
+    "f1.d":"Frasi brevi, spazi, inviti. Guida con domande, come Gesù faceva con i suoi discepoli.",
+    "f2.t":"18 lingue complete",
+    "f2.d":"Ogni lingua ha 6 modelli completi con calibrazione locale (trattamento, traduzione, cultura).",
+    "f3.t":"Fondato sulla Scrittura",
+    "f3.d":"Verifica sempre il testo originale su expecthim.com prima di citare. Spiega con parole semplici, mai inventato.",
+    "f4.t":"Rispetto interreligioso",
+    "f4.d":"Nessun proselitismo, nessuna denigrazione di altre religioni, nessun giudizio. Rispetta ogni fede.",
+    "f5.t":"Limiti: sicurezza prima",
+    "f5.d":"Non è autorità teologica, né terapia, né consulenza medica. Crisi → risorse professionali (1925/1995/988).",
+    "f6.t":"Gratuito e open source",
+    "f6.d":"Licenza MIT-0. Libero di usare, modificare e condividere. Pubblicato su GitHub e ClawHub.",
+    "lang.tag":"Lingue",
+    "lang.title":"18 lingue, la stessa dolcezza",
+    "lang.desc":"Rileva la lingua dell'interlocutore e la mantiene per tutta la conversazione.",
+    "lg.east":"Asia Orientale",
+    "lg.west":"Europa Occidentale",
+    "lg.eastmid":"Europa Orientale / Medio Oriente",
+    "lg.south":"Asia del Sud / Sud-Est Asiatico",
+    "fw.tag":"Struttura",
+    "fw.title":"Cinque passi in ogni conversazione",
+    "fw.desc":"Un ritmo gentile — senza fretta, senza riempire il silenzio.",
+    "s1.t":"Presenza",
+    "s1.d":"Un'accoglienza tranquilla; vedere l'altro.",
+    "s2.t":"Ascolto riflessivo",
+    "s2.d":"Nominare gentilmente ciò che porta.",
+    "s3.t":"Guida",
+    "s3.d":"Una domanda o storia, offerta, non imposta.",
+    "s4.t":"Scrittura / Storia",
+    "s4.d":"Un versetto o racconto adatto, in parole semplici.",
+    "s5.t":"Benedizione",
+    "s5.d":"Speranza e un gentile invito a continuare.",
+    "gospel.title":"La Buona Notizia",
+    "gospel.verse":"«Dio ha tanto amato il mondo da dare il suo Figlio unigenito, perché chiunque crede in lui non muoia, ma abbia la vita eterna.»<cite>— Giovanni 3:16</cite>",
+    "gospel.msg":"Ovunque tu sia, qualunque cosa tu stia attraversando — sei profondamente amato. Questo amore non aspetta che tu sia «abbastanza bravo». È arrivato prima.",
+    "bd.tag":"Limiti",
+    "bd.title":"Gentile, senza varcare la linea",
+    "bd.desc":"Limiti chiari proteggono chi cerca.",
+    "b1.t":"Non è autorità teologica",
+    "b1.d":"Un compagno per la conversazione spirituale — mai un sostituto della chiesa o della teologia.",
+    "b2.t":"Non è psicoterapia",
+    "b2.d":"Quando serve aiuto professionale, guida onestamente verso di esso.",
+    "b3.t":"Niente profezie, niente giudizi",
+    "b3.d":"Non banalizza mai la sofferenza, non conclude mai al posto di Dio.",
+    "b4.t":"La crisi prima di tutto",
+    "b4.d":"Pericolo immediato → linee di crisi (TW 1925/1995/119, US 988).",
+    "in.tag":"Installa",
+    "in.title":"Iniziare",
+    "in.desc":"Installa tramite Skills CLI, o esplora il codice e la documentazione su GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "ru": {
+    "nav.features":"Особенности",
+    "nav.languages":"Языки",
+    "nav.framework":"Структура",
+    "nav.gospel":"Евангелие",
+    "nav.boundaries":"Границы",
+    "nav.install":"Установить",
+    "hero.badge":"Официальный сайт навыка",
+    "hero.sub":"Мягко сопровождать каждое ищущее сердце любовью и учениями Иисуса. 18 языков, 6 сценариев, основано на Писании, безопасно.",
+    "hero.cta1":"Установить навык",
+    "hero.cta2":"Узнать больше",
+    "stat.langs":"языков",
+    "stat.scenarios":"сценариев",
+    "stat.books":"Индекс Писания",
+    "stat.license":"Бесплатно и открыто",
+    "features.tag":"Особенности",
+    "features.title":"Почему этот навык?",
+    "features.desc":"Не проповедь — присутствие. Как кто-то тихо сидит рядом с тобой.",
+    "f1.t":"Мягкое наставление вопросами",
+    "f1.d":"Короткие предложения, паузы, приглашения. Направляет вопросами, как Иисус делал с учениками.",
+    "f2.t":"18 языков полностью",
+    "f2.d":"Каждый язык имеет 6 полных шаблонов с локальной настройкой (обращение, перевод, культура).",
+    "f3.t":"На основе Писания",
+    "f3.d":"Всегда проверяет оригинальный текст на expecthim.com перед цитированием. Объясняет простыми словами, никогда не выдумывает.",
+    "f4.t":"Межрелигиозное уважение",
+    "f4.d":"Без прозелитизма, без очернения других религий, без осуждения. Уважает любую веру.",
+    "f5.t":"Границы: безопасность прежде всего",
+    "f5.d":"Не богословский авторитет, не терапия, не медицинская консультация. Кризис → профессиональная помощь (1925/1995/988).",
+    "f6.t":"Бесплатно и открыто",
+    "f6.d":"Лицензия MIT-0. Свободно для использования, изменения и распространения. Опубликовано на GitHub и ClawHub.",
+    "lang.tag":"Языки",
+    "lang.title":"18 языков, одна нежность",
+    "lang.desc":"Определяет язык собеседника и остаётся в нём на протяжении всего разговора.",
+    "lg.east":"Восточная Азия",
+    "lg.west":"Западная Европа",
+    "lg.eastmid":"Восточная Европа / Ближний Восток",
+    "lg.south":"Южная Азия / Юго-Восточная Азия",
+    "fw.tag":"Структура",
+    "fw.title":"Пять шагов в каждом разговоре",
+    "fw.desc":"Мягкий ритм — без спешки, не заполняя тишину.",
+    "s1.t":"Присутствие",
+    "s1.d":"Тихое приветствие; видеть другого.",
+    "s2.t":"Внимательное слушание",
+    "s2.d":"Мягко назвать то, что человек несёт.",
+    "s3.t":"Наставление",
+    "s3.d":"Один вопрос или история, предложены, не навязаны.",
+    "s4.t":"Писание / История",
+    "s4.d":"Подходящий стих или рассказ, простыми словами.",
+    "s5.t":"Благословение",
+    "s5.d":"Надежда и мягкое приглашение идти дальше.",
+    "gospel.title":"Благая Весть",
+    "gospel.verse":"«Ибо так возлюбил Бог мир, что отдал Сына Своего Единородного, дабы всякий, верующий в Него, не погиб, но имел жизнь вечную.»<cite>— Иоанна 3:16</cite>",
+    "gospel.msg":"Где бы ты ни был, что бы ты ни переживал — ты глубоко любим. Эта любовь не ждёт, пока ты станешь «достаточно хорошим». Она пришла первой.",
+    "bd.tag":"Границы",
+    "bd.title":"Мягко, но не переходя черту",
+    "bd.desc":"Чёткие границы защищают тех, кто ищет.",
+    "b1.t":"Не богословский авторитет",
+    "b1.d":"Сопровождающий для духовной беседы — никогда не замена церкви или богословию.",
+    "b2.t":"Не психотерапия",
+    "b2.d":"Когда нужна профессиональная помощь, честно направляет к ней.",
+    "b3.t":"Без пророчеств, без осуждения",
+    "b3.d":"Никогда не упрощает страдание, не заключает от имени Бога.",
+    "b4.t":"Кризис прежде всего",
+    "b4.d":"Немедленная опасность → телефоны доверия (TW 1925/1995/119, US 988).",
+    "in.tag":"Установить",
+    "in.title":"Начать",
+    "in.desc":"Установите через Skills CLI или изучите код и документацию на GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "tr": {
+    "nav.features":"Özellikler",
+    "nav.languages":"Diller",
+    "nav.framework":"Yapı",
+    "nav.gospel":"İncil",
+    "nav.boundaries":"Sınırlar",
+    "nav.install":"Kurulum",
+    "hero.badge":"Beceri resmi web sitesi",
+    "hero.sub":"İsa'nın sevgisi ve öğretileriyle arayan her kalbe yumuşak bir şekilde eşlik edin. 18 dil, 6 senaryo, Kitab-ı Mukaddes temelli, güvenli.",
+    "hero.cta1":"Beceriyi kur",
+    "hero.cta2":"Daha fazla bilgi",
+    "stat.langs":"dil",
+    "stat.scenarios":"senaryo",
+    "stat.books":"Yazılım dizini",
+    "stat.license":"Ücretsiz ve açık kaynak",
+    "features.tag":"Özellikler",
+    "features.title":"Neden bu beceri?",
+    "features.desc":"Vaaz değil — var olmak. Senin yanında sessizce oturan biri gibi.",
+    "f1.t":"Yumuşak, soruyla yönlendirme",
+    "f1.d":"Kısa cümleler, boşluklar, davetler. İsa'nın öğrencilerine sorularla yol gösterdiği gibi, sorularla yönlendirir.",
+    "f2.t":"18 dil tamamen",
+    "f2.d":"Her dilin, yerelleştirilmiş ton kalibrasyonuyla (hitap, çeviri, kültür) 6 tam senaryo şablonu vardır.",
+    "f3.t":"Kitab-ı Mukaddes temelli",
+    "f3.d":"Alıntıdan önce her zaman expecthim.com'da orijinal metni doğrular. Basit kelimelerle açıklar, asla uydurmaz.",
+    "f4.t":"Dinlerarası saygı",
+    "f4.d":"Hiçbir mezhep değiştirme, diğer dinleri aşağılama veya yargılama yoktur. Her inancı saygıyla karşılar.",
+    "f5.t":"Sınırlar: güvenlik önce",
+    "f5.d":"Ne teolojik otorite, ne terapi, ne tıbbi danışmanlık. Kriz → profesyonel kaynaklar (1925/1995/988).",
+    "f6.t":"Ücretsiz ve açık kaynak",
+    "f6.d":"MIT-0 lisansı. Kullanmak, değiştirmek ve paylaşmak özgür. GitHub ve ClawHub'da yayınlandı.",
+    "lang.tag":"Diller",
+    "lang.title":"18 dil, aynı yumuşaklık",
+    "lang.desc":"Karşıdaki kişinin dilini algılar ve tüm görüşme boyunca o dilde kalır.",
+    "lg.east":"Doğu Asya",
+    "lg.west":"Batı Avrupa",
+    "lg.eastmid":"Doğu Avrupa / Orta Doğu",
+    "lg.south":"Güney Asya / Güneydoğu Asya",
+    "fw.tag":"Yapı",
+    "fw.title":"Her konuşmada beş adım",
+    "fw.desc":"Yumuşak bir ritim — acele etmeden, sessizliği doldurmadan.",
+    "s1.t":"Var olmak",
+    "s1.d":"Sessiz bir karşılama; karşıdakini görmek.",
+    "s2.t":"Yansıtıcı dinleme",
+    "s2.d":"Taşıdığı şeyi yumuşak bir şekilde sözcüklere dökmek.",
+    "s3.t":"Yönlendirme",
+    "s3.d":"Dayatılmadan, bir soru veya hikâye önerilir.",
+    "s4.t":"Kitab-ı Mukaddes / Hikâye",
+    "s4.d":"Uygun bir ayet veya anlatı, basit kelimelerle.",
+    "s5.t":"Kutsama",
+    "s5.d":"Umut ve yumuşak bir davetle sonlandırır.",
+    "gospel.title":"Müjde",
+    "gospel.verse":"«Çünkü Tanrı dünyayı o kadar sevdi ki, Oğlu'nun tek olanını verdi; öyle ki, O'na inanan hiçbir kimse mahvolmasın, tersine sonsuz yaşama kavuşsun.»<cite>— Yuhanna 3:16</cite>",
+    "gospel.msg":"Nerede olursan ol, ne yaşarsan yaşa — derinden seviliyorsun. Bu sevgi, senin «yeterince iyi» olmanı beklemez. O önce geldi.",
+    "bd.tag":"Sınırlar",
+    "bd.title":"Yumuşak ama asla sınırı aşmadan",
+    "bd.desc":"Net sınırlar, arayanları korur.",
+    "b1.t":"Teolojik otorite değil",
+    "b1.d":"Ruhani sohbet için bir yol arkadaşı — asla bir kilise veya teolojinin yerine geçmez.",
+    "b2.t":"Psikoterapi değil",
+    "b2.d":"Profesyonel yardım gerektiğinde, dürüstçe buna yönlendirir.",
+    "b3.t":"Ne kehanet ne yargılama",
+    "b3.d":"Acıyı asla basitleştirmez, Tanrı adına sonuç çıkarmaz.",
+    "b4.t":"Kriz önceliklidir",
+    "b4.d":"Acil tehlike → kriz hatları (TW 1925/1995/119, ABD 988).",
+    "in.tag":"Kurulum",
+    "in.title":"Başlamak",
+    "in.desc":"Skills CLI ile kurun veya GitHub / ClawHub'da kaynak kodunu ve belgeleri inceleyin.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "ar": {
+    "nav.features":"المميزات",
+    "nav.languages":"اللغات",
+    "nav.framework":"الإطار",
+    "nav.gospel":"البشارة",
+    "nav.boundaries":"الحدود",
+    "nav.install":"التثبيت",
+    "hero.badge":"الموقع الرسمي للمهارة",
+    "hero.sub":"مرافقة كل قلبٍ طالب بحنان، بحب وتعاليم يسوع. 18 لغة، 6 سيناريوهات، مبني على الكتاب المقدس، آمن.",
+    "hero.cta1":"تثبيت المهارة",
+    "hero.cta2":"اعرف المزيد",
+    "stat.langs":"لغة",
+    "stat.scenarios":"سيناريو",
+    "stat.books":"فهرس الكتاب المقدس",
+    "stat.license":"مجاني ومفتوح المصدر",
+    "features.tag":"المميزات",
+    "features.title":"لماذا هذه المهارة؟",
+    "features.desc":"ليست وعظًا — بل حضور. كمن يجلس بجوارك في صمت.",
+    "f1.t":"مرافقة لطيفة بالأسئلة",
+    "f1.d":"جمل قصيرة، فراغات، دعوات. يُرشد بالأسئلة كما كان يفعل يسوع مع تلاميذه.",
+    "f2.t":"18 لغة كاملة",
+    "f2.d":"كل لغة تحتوي على 6 قوالب كاملة مع معايرة محلية (الخطاب، الترجمة، الثقافة).",
+    "f3.t":"مبني على الكتاب المقدس",
+    "f3.d":"يتحقق دائمًا من النص الأصلي على expecthim.com قبل الاقتباس. يشرح بعبارات بسيطة، لا يختلق أبدًا.",
+    "f4.t":"احترام الأديان",
+    "f4.d":"لا تبشير، لا تشهير بأديان أخرى، لا حكم. يحترم كل الإيمان.",
+    "f5.t":"الحدود: السلامة أولاً",
+    "f5.d":"ليست سلطة لاهوتية، ولا علاجًا نفسيًا، ولا نصيحة طبية. الأزمة ← موارد متخصصة (1925/1995/988).",
+    "f6.t":"مجاني ومفتوح المصدر",
+    "f6.d":"رخصة MIT-0. حر في الاستخدام والتعديل والمشاركة. منشور على GitHub وClawHub.",
+    "lang.tag":"اللغات",
+    "lang.title":"18 لغة، نفس اللطف",
+    "lang.desc":"يكتشف لغة المحاور ويبقى فيها طوال المحادثة.",
+    "lg.east":"شرق آسيا",
+    "lg.west":"أوروبا الغربية",
+    "lg.eastmid":"أوروبا الشرقية / الشرق الأوسط",
+    "lg.south":"جنوب آسيا / جنوب شرق آسيا",
+    "fw.tag":"الإطار",
+    "fw.title":"خمس خطوات في كل محادثة",
+    "fw.desc":"إيقاع لطيف — من دون استعجال، من دون ملء الصمت.",
+    "s1.t":"الحضور",
+    "s1.d":"ترحيب هادئ؛ رؤية الآخر.",
+    "s2.t":"الاستماع التأملي",
+    "s2.d":"تسمية ما يحمله بلطف.",
+    "s3.t":"المرافقة",
+    "s3.d":"سؤال أو قصة واحدة، مُقدَّمة لا مفروضة.",
+    "s4.t":"الكتاب المقدس / القصة",
+    "s4.d":"آية أو قصة مناسبة، بعبارات بسيطة.",
+    "s5.t":"البركة",
+    "s5.d":"الأمل ودعوة لطيفة للاستمرار.",
+    "gospel.title":"البشارة",
+    "gospel.verse":"«لأنه هكذا أحب الله العالم، حتى بذل ابنه الوحيد، لكي لا يهلك كل من يؤمن به، بل تكون له الحياة الأبدية.»<cite>— يوحنا 3:16</cite>",
+    "gospel.msg":"حيثما كنت، مهما كنت تمر به — أنت محبوب بعمق. هذه المحبة لا تنتظرك لتكون «جيدًا بما فيه الكفاية». وصلت أولًا.",
+    "bd.tag":"الحدود",
+    "bd.title":"لطيف، لكنه لا يتجاوز الخط",
+    "bd.desc":"حدود واضحة تحمي من يطلب.",
+    "b1.t":"ليست سلطة لاهوتية",
+    "b1.d":"رفيق في المحادثة الروحية — لن يكون بديلًا عن الكنيسة أو اللاهوت.",
+    "b2.t":"ليست علاجًا نفسيًا",
+    "b2.d":"عندما يُحتاج إلى مساعدة متخصصة، يُرشد إليها بصدق.",
+    "b3.t":"لا تنبؤ ولا حكم",
+    "b3.d":"لا تُبسِّط الألم أبدًا، ولا تتحدث باسم الله.",
+    "b4.t":"الأزمة لها الأولوية",
+    "b4.d":"خطر فوري ← خطوط الأزمات (تايوان 1925/1995/119، أمريكا 988).",
+    "in.tag":"التثبيت",
+    "in.title":"ابدأ",
+    "in.desc":"ثبّت عبر CLI للمهارات، أو استكشف الكود والوثائق على GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "hi": {
+    "nav.features":"विशेषताएं",
+    "nav.languages":"भाषाएं",
+    "nav.framework":"ढांचा",
+    "nav.gospel":"सुसमाचार",
+    "nav.boundaries":"सीमाएं",
+    "nav.install":"स्थापित करें",
+    "hero.badge":"स्किल की आधिकारिक वेबसाइट",
+    "hero.sub":"यीशु के प्रेम और शिक्षाओं से हर खोजती आत्मा को कोमलता से साथ दें। 18 भाषाएं, 6 परिदृश्य, शास्त्र-आधारित, सुरक्षित।",
+    "hero.cta1":"स्किल स्थापित करें",
+    "hero.cta2":"और जानें",
+    "stat.langs":"भाषाएं",
+    "stat.scenarios":"परिदृश्य",
+    "stat.books":"शास्त्र सूची",
+    "stat.license":"मुफ्त और खुला स्रोत",
+    "features.tag":"विशेषताएं",
+    "features.title":"यह स्किल क्यों?",
+    "features.desc":"प्रवचन नहीं — उपस्थिति। जैसे कोई चुपचाप तुम्हारे बगल में बैठा हो।",
+    "f1.t":"कोमल, प्रश्न-निर्देशित",
+    "f1.d":"छोटे वाक्य, स्थान, निमंत्रण। प्रश्नों से मार्गदर्शन, जैसे यीशु अपने शिष्यों से करते थे।",
+    "f2.t":"18 भाषाएं पूर्ण",
+    "f2.d":"प्रत्येक भाषा में 6 पूर्ण टेम्पलेट हैं जिनमें स्थानीय ट्यूनिंग (संबोधन, अनुवाद, संस्कृति) है।",
+    "f3.t":"शास्त्र-आधारित",
+    "f3.d":"उद्धरण से पहले हमेशा expecthim.com पर मूल पाठ सत्यापित करें। सरल शब्दों में समझाएं, कभी नहीं बनाएं।",
+    "f4.t":"अंतर-धार्मिक सम्मान",
+    "f4.d":"कोई धर्मांतरण नहीं, अन्य धर्मों को नीचा दिखाना नहीं, कोई न्याय नहीं। हर विश्वास का सम्मान करें।",
+    "f5.t":"सीमाएं: सुरक्षा पहले",
+    "f5.d":"न तो धार्मिक अधिकारी, न मनोचिकित्सक, न चिकित्सक। संकट → विशेषज्ञ संसाधन (1925/1995/988)।",
+    "f6.t":"मुफ्त और खुला स्रोत",
+    "f6.d":"MIT-0 लाइसेंस। उपयोग, संशोधन और साझा करने के लिए स्वतंत्र। GitHub और ClawHub पर प्रकाशित।",
+    "lang.tag":"भाषाएं",
+    "lang.title":"18 भाषाएं, वही कोमलता",
+    "lang.desc":"उपयोगकर्ता की भाषा का पता लगाता है और पूरी बातचीत में उसी में रहता है।",
+    "lg.east":"पूर्वी एशिया",
+    "lg.west":"पश्चिमी यूरोप",
+    "lg.eastmid":"पूर्वी यूरोप / मध्य पूर्व",
+    "lg.south":"दक्षिण एशिया / दक्षिण-पूर्वी एशिया",
+    "fw.tag":"ढांचा",
+    "fw.title":"हर बातचीत के पांच कदम",
+    "fw.desc":"कोमल लय — जल्दबाजी नहीं, चुप्पी नहीं भरते।",
+    "s1.t":"उपस्थिति",
+    "s1.d":"शांत स्वागत; दूसरे को देखना।",
+    "s2.t":"प्रतिबिंबित सुनना",
+    "s2.d":"जो वह उठाता है उसे कोमलता से बताना।",
+    "s3.t":"मार्गदर्शन",
+    "s3.d":"एक प्रश्न या कहानी, थोपी नहीं, बल्कि आमंत्रित।",
+    "s4.t":"शास्त्र / कहानी",
+    "s4.d":"उपयुक्त पद या कथा, सरल शब्दों में।",
+    "s5.t":"आशीर्वाद",
+    "s5.d":"आशा और कोमल आमंत्रण के साथ समाप्त।",
+    "gospel.title":"सुसमाचार",
+    "gospel.verse":"«क्योंकि परमेश्वर ने संसार से इतना प्रेम रखा कि उसने अपना एकलौता पुत्र दे दिया, ताकि जो कोई उस पर विश्वास करे, वह नाश न हो, किंतु अनन्त जीवन पाए।»<cite>— यूहन्ना 3:16</cite>",
+    "gospel.msg":"तुम जहां भी हो, जो भी अनुभव कर रहे हो — तुम गहराई से प्रेम किए गए हो। यह प्रेम तुम्हारे «काफी अच्छे» होने का इंतज़ार नहीं करता। यह पहले पहुंच गया।",
+    "bd.tag":"सीमाएं",
+    "bd.title":"कोमल, लेकिन सीमा न लांघें",
+    "bd.desc":"स्पष्ट सीमाएं मांगने वालों की रक्षा करती हैं।",
+    "b1.t":"धार्मिक अधिकारी नहीं",
+    "b1.d":"आत्मिक बातचीत के लिए साथी — कभी किसी चर्च या धर्मशास्त्र की जगह नहीं।",
+    "b2.t":"मनोचिकित्सा नहीं",
+    "b2.d":"जब पेशेवर मदद ज़रूरी हो, ईमानदारी से उसकी ओर मार्गदर्शन करें।",
+    "b3.t":"न कोई भविष्यवाणी, न न्याय",
+    "b3.d":"कभी दर्द को सरल न बनाएं, न परमेश्वर की जगह निष्कर्ष निकालें।",
+    "b4.t":"संकट पहले",
+    "b4.d":"तत्काल खतरा → संकट हॉटलाइन (ताइवान 1925/1995/119, अमेरिका 988)।",
+    "in.tag":"स्थापित करें",
+    "in.title":"शुरू करें",
+    "in.desc":"Skills CLI से स्थापित करें, या GitHub / ClawHub पर स्रोत और दस्तावेज़ देखें।",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "id": {
+    "nav.features":"Fitur",
+    "nav.languages":"Bahasa",
+    "nav.framework":"Kerangka",
+    "nav.gospel":"Kabar Sukacita",
+    "nav.boundaries":"Batasan",
+    "nav.install":"Pasang",
+    "hero.badge":"Situs resmi skill",
+    "hero.sub":"Menemani setiap hati yang mencari dengan kasih dan ajaran Yesus. 18 bahasa, 6 skenario, berlandaskan Kitab Suci, aman.",
+    "hero.cta1":"Pasang skill",
+    "hero.cta2":"Pelajari lebih lanjut",
+    "stat.langs":"bahasa",
+    "stat.scenarios":"skenario",
+    "stat.books":"Indeks Kitab Suci",
+    "stat.license":"Gratis dan sumber terbuka",
+    "features.tag":"Fitur",
+    "features.title":"Mengapa skill ini?",
+    "features.desc":"Bukan berkhotbah — hadir. Seperti seseorang yang duduk di sampingmu dalam diam.",
+    "f1.t":"Bimbingan lembut dengan pertanyaan",
+    "f1.d":"Kalimat pendek, jeda, ajakan. Memandu dengan pertanyaan, seperti yang Yesus lakukan kepada murid-muridnya.",
+    "f2.t":"18 bahasa lengkap",
+    "f2.d":"Setiap bahasa memiliki 6 template lengkap dengan kalibrasi lokal (sapaan, terjemahan, budaya).",
+    "f3.t":"Berlandaskan Kitab Suci",
+    "f3.d":"Selalu verifikasi teks asli di expecthim.com sebelum mengutip. Jelaskan dengan kata sederhana, tidak pernah mengarang.",
+    "f4.t":"Saling menghormati antar-agama",
+    "f4.d":"Tanpa proselitisasi, tanpa merendahkan agama lain, tanpa menghakimi. Menghormati semua latar belakang iman.",
+    "f5.t":"Batasan: keselamatan dulu",
+    "f5.d":"Bukan otoritas teologi, bukan terapi, bukan nasihat medis. Krisis → sumber profesional (1925/1995/988).",
+    "f6.t":"Gratis dan sumber terbuka",
+    "f6.d":"Lisensi MIT-0. Bebas digunakan, dimodifikasi, dan dibagikan. Diterbitkan di GitHub dan ClawHub.",
+    "lang.tag":"Bahasa",
+    "lang.title":"18 bahasa, kelembutan yang sama",
+    "lang.desc":"Mendeteksi bahasa pengguna dan bertahan di dalamnya sepanjang percakapan.",
+    "lg.east":"Asia Timur",
+    "lg.west":"Eropa Barat",
+    "lg.eastmid":"Eropa Timur / Timur Tengah",
+    "lg.south":"Asia Selatan / Asia Tenggara",
+    "fw.tag":"Kerangka",
+    "fw.title":"Lima langkah dalam setiap percakapan",
+    "fw.desc":"Irama lembut — tanpa terburu-buru, tanpa mengisi keheningan.",
+    "s1.t":"Kehadiran",
+    "s1.d":"Sambutan tenang; melihat yang lain.",
+    "s2.t":"Mendengarkan reflektif",
+    "s2.d":"Menamai dengan lembut apa yang dibawanya.",
+    "s3.t":"Bimbingan",
+    "s3.d":"Satu pertanyaan atau kisah, ditawarkan bukan dipaksakan.",
+    "s4.t":"Kitab Suci / Kisah",
+    "s4.d":"Ayat atau kisah yang sesuai, dengan kata-kata sederhana.",
+    "s5.t":"Berkat",
+    "s5.d":"Harapan dan ajakan lembut untuk melanjutkan.",
+    "gospel.title":"Kabar Sukacita",
+    "gospel.verse":"«Karena Allah begitu mengasihi dunia sehingga Ia memberikan Anak-Nya yang tunggal, agar setiap orang yang percaya kepada-Nya tidak binasa, melainkan mendapat hidup yang kekal.»<cite>— Yohanes 3:16</cite>",
+    "gospel.msg":"Di mana pun kamu berada, apa pun yang kamu alami — kamu dikasihi dengan mendalam. Kasih itu tidak menunggu kamu «cukup baik». Kasih itu sudah sampai lebih dulu.",
+    "bd.tag":"Batasan",
+    "bd.title":"Lembut, tapi tidak melewati batas",
+    "bd.desc":"Batasan yang jelas melindungi mereka yang mencari.",
+    "b1.t":"Bukan otoritas teologi",
+    "b1.d":"Teman percakapan rohani — bukan pengganti gereja atau teologi.",
+    "b2.t":"Bukan psikoterapi",
+    "b2.d":"Ketika bantuan profesional dibutuhkan, arahkan dengan jujur.",
+    "b3.t":"Tanpa nubuat, tanpa penghakiman",
+    "b3.d":"Tidak pernah menyederhanakan penderitaan, tidak pernah berbicara untuk Tuhan.",
+    "b4.t":"Krisis jadi yang utama",
+    "b4.d":"Bahaya langsung → jalur krisis (TW 1925/1995/119, US 988).",
+    "in.tag":"Pasang",
+    "in.title":"Mulai",
+    "in.desc":"Pasang melalui Skills CLI, atau jelajahi kode dan dokumen di GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "th": {
+    "nav.features":"คุณสมบัติ",
+    "nav.languages":"ภาษา",
+    "nav.framework":"กรอบการสนทนา",
+    "nav.gospel":"ข่าวประเสริฐ",
+    "nav.boundaries":"ขอบเขต",
+    "nav.install":"ติดตั้ง",
+    "hero.badge":"เว็บไซต์ทางการของสกิล",
+    "hero.sub":"อยู่เคียงข้างทุกหัวใจที่กำลังแสวงหาด้วยความรักและคำสอนของพระเยซู 18 ภาษา 6 สถานการณ์ อิงพระคัมภีร์ ปลอดภัย",
+    "hero.cta1":"ติดตั้งสกิล",
+    "hero.cta2":"เรียนรู้เพิ่มเติม",
+    "stat.langs":"ภาษา",
+    "stat.scenarios":"สถานการณ์",
+    "stat.books":"ดัชนีพระคัมภีร์",
+    "stat.license":"ฟรีและโอเพนซอร์ส",
+    "features.tag":"คุณสมบัติ",
+    "features.title":"ทำไมต้องสกิลนี้?",
+    "features.desc":"ไม่ใช่การเทศนา — แต่เป็นการอยู่เคียงข้าง ราวกับคนที่นั่งเงียบๆ ข้างคุณ",
+    "f1.t":"ชี้นำด้วยคำถามอย่างอ่อนโยน",
+    "f1.d":"ประโยคสั้น มีช่องว่าง มีคำเชิญ ชี้นำด้วยคำถาม ดังที่พระเยซูทรงกระทำกับสาวก",
+    "f2.t":"ครอบคลุม 18 ภาษา",
+    "f2.d":"แต่ละภาษามีแม่แบบครบ 6 สถานการณ์พร้อมการปรับสำเนียงในท้องถิ่น (การสรรพนาม คำแปล วัฒนธรรม)",
+    "f3.t":"อิงพระคัมภีร์",
+    "f3.d":"ตรวจสอบต้นฉบับบน expecthim.com ก่อนอ้างอิงทุกครั้ง อธิบายด้วยภาษาง่ายๆ ไม่เคยแต่งขึ้น",
+    "f4.t":"เคารพข้ามศาสนา",
+    "f4.d":"ไม่ชักชวนเปลี่ยนศาสนา ไม่ดูถูกศาสนาอื่น ไม่ตัดสินใคร เคารพทุกศรัทธา",
+    "f5.t":"ขอบเขต: ความปลอดภัยก่อน",
+    "f5.d":"ไม่ใช่ผู้มีอำนาจทางเทววิทยา ไม่ใช่จิตบำบัด ไม่ใช่คำแนะนำทางการแพทย์ วิกฤต → แหล่งข้อมูลเฉพาะทาง (1925/1995/988)",
+    "f6.t":"ฟรีและโอเพนซอร์ส",
+    "f6.d":"สัญญาอนุญาต MIT-0 ใช้งาน แก้ไข และแจกจ่ายได้โดยเสรี เผยแพร่บน GitHub และ ClawHub",
+    "lang.tag":"ภาษา",
+    "lang.title":"18 ภาษา ความอ่อนโยนเดียวกัน",
+    "lang.desc":"ตรวจจับภาษาของผู้ใช้และใช้ภาษาเดียวกันตลอดการสนทนา",
+    "lg.east":"เอเชียตะวันออก",
+    "lg.west":"ยุโรปตะวันตก",
+    "lg.eastmid":"ยุโรปตะวันออก / ตะวันออกกลาง",
+    "lg.south":"เอเชียใต้ / เอเชียตะวันออกเฉียงใต้",
+    "fw.tag":"กรอบการสนทนา",
+    "fw.title":"ห้าขั้นตอนในทุกการสนทนา",
+    "fw.desc":"จังหวะอ่อนโยน — ไม่เร่งรีบ ไม่เติมความเงียบ",
+    "s1.t":"การอยู่เคียงข้าง",
+    "s1.d":"ต้อนรับอย่างสงบ มองเห็นอีกคน",
+    "s2.t":"การฟังแบบสะท้อน",
+    "s2.d":"บอกเล่าสิ่งที่เขากำลังแบกรับอย่างอ่อนโยน",
+    "s3.t":"การชี้นำ",
+    "s3.d":"คำถามหนึ่งข้อหรือเรื่องเล่าหนึ่งเรื่อง เสนอไม่บังคับ",
+    "s4.t":"พระคัมภีร์ / เรื่องเล่า",
+    "s4.d":"บทหรือเรื่องเล่าที่เหมาะสม ด้วยถ้อยคำง่ายๆ",
+    "s5.t":"การอวยพร",
+    "s5.d":"ความหวัง และเชิญชวนอย่างอ่อนโยนให้ไปต่อ",
+    "gospel.title":"ข่าวประเสริฐ",
+    "gospel.verse":"«เพราะว่าพระเจ้าทรงรักโลกอย่างยิ่งใหญ่ จนได้ประทานพระบุตรองค์เดียวของพระองค์ เพื่อทุกคนที่เชื่อในพระองค์จะไม่พินาศ แต่มีชีวิตนิรันดร์»<cite>— ยอห์น 3:16</cite>",
+    "gospel.msg":"ไม่ว่าคุณจะอยู่ที่ไหน กำลังเผชิญกับอะไร — คุณถูกรักอย่างลึกซึ้ง ความรักนั้นไม่รอให้คุณ «ดีพอ» มันมาถึงก่อนแล้ว",
+    "bd.tag":"ขอบเขต",
+    "bd.title":"อ่อนโยน แต่ไม่ข้ามเส้น",
+    "bd.desc":"ขอบเขตที่ชัดเจนปกป้องผู้ที่กำลังแสวงหา",
+    "b1.t":"ไม่ใช่ผู้มีอำนาจทางเทววิทยา",
+    "b1.d":"เป็นเพื่อนสนทนาทางจิตวิญญาณ — ไม่เคยทดแทนโบสถ์หรือเทววิทยา",
+    "b2.t":"ไม่ใช่จิตบำบัด",
+    "b2.d":"เมื่อต้องการความช่วยเหลือเฉพาะทาง แนะนำอย่างจริงใจ",
+    "b3.t":"ไม่ทำนาย ไม่ตัดสิน",
+    "b3.d":"ไม่เคยทำให้ความทุกข์เรียบง่าย ไม่พูดแทนพระเจ้า",
+    "b4.t":"วิกฤตมาก่อน",
+    "b4.d":"อันตรายทันที → สายด่วนวิกฤต (ไต้หวัน 1925/1995/119, สหรัฐ 988)",
+    "in.tag":"ติดตั้ง",
+    "in.title":"เริ่มต้น",
+    "in.desc":"ติดตั้งผ่าน Skills CLI หรือดูซอร์สโค้ดและเอกสารบน GitHub / ClawHub",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "vi": {
+    "nav.features":"Tính năng",
+    "nav.languages":"Ngôn ngữ",
+    "nav.framework":"Khung",
+    "nav.gospel":"Tin Mừng",
+    "nav.boundaries":"Giới hạn",
+    "nav.install":"Cài đặt",
+    "hero.badge":"Trang web chính thức của skill",
+    "hero.sub":"Đồng hành cùng mỗi tâm hồn đang tìm kiếm bằng tình yêu và lời dạy của Chúa Giêsu. 18 ngôn ngữ, 6 tình huống, dựa trên Kinh Thánh, an toàn.",
+    "hero.cta1":"Cài đặt skill",
+    "hero.cta2":"Tìm hiểu thêm",
+    "stat.langs":"ngôn ngữ",
+    "stat.scenarios":"tình huống",
+    "stat.books":"Chỉ mục Kinh Thánh",
+    "stat.license":"Miễn phí và nguồn mở",
+    "features.tag":"Tính năng",
+    "features.title":"Tại sao chọn skill này?",
+    "features.desc":"Không giảng — có mặt ở đây. Như ai đó ngồi yên bên cạnh bạn.",
+    "f1.t":"Hướng dẫn bằng câu hỏi nhẹ nhàng",
+    "f1.d":"Câu ngắn, khoảng trống, lời mời. Dẫn dắt bằng câu hỏi, như Chúa Giêsu với các môn đệ.",
+    "f2.t":"18 ngôn ngữ đầy đủ",
+    "f2.d":"Mỗi ngôn ngữ có 6 mẫu hoàn chỉnh với điều chỉnh giọng địa phương (xưng hô, bản dịch, văn hóa).",
+    "f3.t":"Dựa trên Kinh Thánh",
+    "f3.d":"Luôn kiểm tra nguyên văn trên expecthim.com trước khi trích dẫn. Giải thích bằng lời đơn giản, không bao giờ bịa đặt.",
+    "f4.t":"Tôn trọng liên tôn",
+    "f4.d":"Không cải đạo, không hạ thấp tôn giáo khác, không phán xét. Tôn trọng mọi nền tảng đức tin.",
+    "f5.t":"Giới hạn: an toàn là trên hết",
+    "f5.d":"Không phải thẩm quyền thần học, không phải trị liệu tâm lý, không phải tư vấn y khoa. Khủng hoảng → nguồn chuyên môn (1925/1995/988).",
+    "f6.t":"Miễn phí và nguồn mở",
+    "f6.d":"Giấy phép MIT-0. Tự do sử dụng, chỉnh sửa và chia sẻ. Đăng trên GitHub và ClawHub.",
+    "lang.tag":"Ngôn ngữ",
+    "lang.title":"18 ngôn ngữ, sự dịu dàng như nhau",
+    "lang.desc":"Tự động nhận diện ngôn ngữ của người dùng và duy trì suốt cuộc trò chuyện.",
+    "lg.east":"Đông Á",
+    "lg.west":"Tây Âu",
+    "lg.eastmid":"Đông Âu / Trung Đông",
+    "lg.south":"Nam Á / Đông Nam Á",
+    "fw.tag":"Khung",
+    "fw.title":"Năm bước trong mỗi cuộc trò chuyện",
+    "fw.desc":"Nhịp điệu nhẹ nhàng — không vội vàng, không lấp đầy khoảng lặng.",
+    "s1.t":"Có mặt",
+    "s1.d":"Chào đón yên bình; nhìn thấy người kia.",
+    "s2.t":"Lắng nghe phản ánh",
+    "s2.d":"Nhẹ nhàng gọi tên điều người ta đang mang.",
+    "s3.t":"Hướng dẫn",
+    "s3.d":"Một câu hỏi hoặc câu chuyện, được đề nghị chứ không áp đặt.",
+    "s4.t":"Kinh Thánh / Chuyện",
+    "s4.d":"Một câu Kinh hoặc câu chuyện phù hợp, bằng lời đơn giản.",
+    "s5.t":"Chúc phúc",
+    "s5.d":"Hy vọng và lời mời nhẹ nhàng để tiếp tục.",
+    "gospel.title":"Tin Mừng",
+    "gospel.verse":"«Vì Thiên Chúa yêu thương thế gian đến nỗi đã ban Con Một của Ngài, để ai tin vào Con ấy không bị hư mất, nhưng được sự sống đời đời.»<cite>— Gioan 3:16</cite>",
+    "gospel.msg":"Dù bạn đang ở đâu, đang trải qua điều gì — bạn được yêu thương sâu sắc. Tình yêu đó không chờ bạn «đủ tốt». Nó đã đến trước rồi.",
+    "bd.tag":"Giới hạn",
+    "bd.title":"Dịu dàng, nhưng không vượt qua ranh giới",
+    "bd.desc":"Giới hạn rõ ràng bảo vệ những ai đang tìm kiếm.",
+    "b1.t":"Không phải thẩm quyền thần học",
+    "b1.d":"Người đồng hành trong cuộc trò chuyện tâm linh — không thay thế nhà thờ hay thần học.",
+    "b2.t":"Không phải trị liệu tâm lý",
+    "b2.d":"Khi cần hỗ trợ chuyên môn, hướng dẫn một cách chân thành.",
+    "b3.t":"Không tiên tri, không phán xét",
+    "b3.d":"Không bao giờ đơn giản hóa đau khổ, không kết luận thay cho Chúa.",
+    "b4.t":"Khủng hoảng được ưu tiên",
+    "b4.d":"Nguy hiểm ngay lập tức → đường dây khủng hoảng (Đài Loan 1925/1995/119, Mỹ 988).",
+    "in.tag":"Cài đặt",
+    "in.title":"Bắt đầu",
+    "in.desc":"Cài qua Skills CLI, hoặc xem mã nguồn và tài liệu trên GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  },
+  "nl": {
+    "nav.features":"Kenmerken",
+    "nav.languages":"Talen",
+    "nav.framework":"Structuur",
+    "nav.gospel":"Evangelie",
+    "nav.boundaries":"Grenzen",
+    "nav.install":"Installeren",
+    "hero.badge":"Officiële skill-website",
+    "hero.sub":"Zacht begeleiden elk zoekend hart met de liefde en leringen van Jezus. 18 talen, 6 scenario's, Schrift-geworteld, veilig.",
+    "hero.cta1":"Skill installeren",
+    "hero.cta2":"Meer weten",
+    "stat.langs":"talen",
+    "stat.scenarios":"scenario's",
+    "stat.books":"Schriftindex",
+    "stat.license":"Gratis en open source",
+    "features.tag":"Kenmerken",
+    "features.title":"Waarom deze skill?",
+    "features.desc":"Niet preken — presentie. Zoals iemand die stil naast je zit.",
+    "f1.t":"Zachte, vraag-gestuurde begeleiding",
+    "f1.d":"Korte zinnen, stiltes, uitnodigingen. Begeleidt met vragen, zoals Jezus deed bij zijn leerlingen.",
+    "f2.t":"18 talen volledig",
+    "f2.d":"Elke taal heeft 6 volledige sjablonen met lokale kalibratie (aanspreking, vertaling, cultuur).",
+    "f3.t":"Schrift-geworteld",
+    "f3.d":"Verifieert altijd de originele tekst op expecthim.com vóór het citeren. Legt uit in eenvoudige woorden, verzin nooit.",
+    "f4.t":"Interreligieuze eerbied",
+    "f4.d":"Geen bekeeringsdrang, geen denigreren van andere religies, geen oordeel. Eert elk geloof.",
+    "f5.t":"Grenzen: veiligheid eerst",
+    "f5.d":"Geen theologische autoriteit, geen therapie, geen medisch advies. Crisis → professionele hulp (1925/1995/988).",
+    "f6.t":"Gratis en open source",
+    "f6.d":"MIT-0 licentie. Vrij te gebruiken, aan te passen en te delen. Gepubliceerd op GitHub en ClawHub.",
+    "lang.tag":"Talen",
+    "lang.title":"18 talen, dezelfde zachtheid",
+    "lang.desc":"Detecteert de taal van de gebruiker en blijft daarin gedurende het hele gesprek.",
+    "lg.east":"Oost-Azië",
+    "lg.west":"West-Europa",
+    "lg.eastmid":"Oost-Europa / Midden-Oosten",
+    "lg.south":"Zuid-Azië / Zuidoost-Azië",
+    "fw.tag":"Structuur",
+    "fw.title":"Vijf stappen in elk gesprek",
+    "fw.desc":"Een zacht ritme — zonder haast, zonder de stilte te vullen.",
+    "s1.t":"Aanwezigheid",
+    "s1.d":"Een rustig welkom; de ander zien.",
+    "s2.t":"Spiegelend luisteren",
+    "s2.d":"Zacht benoemen wat iemand meedraagt.",
+    "s3.t":"Begeleiding",
+    "s3.d":"Eén vraag of verhaal, aangeboden, niet opgelegd.",
+    "s4.t":"Schrift / Verhaal",
+    "s4.d":"Een passend vers of verhaal, in eenvoudige woorden.",
+    "s5.t":"Zegen",
+    "s5.d":"Hoop en een zachte uitnodiging om verder te gaan.",
+    "gospel.title":"Het Goede Nieuws",
+    "gospel.verse":"«Want alzo lief had God de wereld, dat Hij Zijn eniggeboren Zoon gegeven heeft, opdat een ieder die in Hem gelooft, niet verderve, maar het eeuwige leven hebbe.»<cite>— Johannes 3:16</cite>",
+    "gospel.msg":"Waar je ook bent, wat je ook doormaakt — je bent diep geliefd. Deze liefde wacht niet tot je «goed genoeg» bent. Hij was er eerst.",
+    "bd.tag":"Grenzen",
+    "bd.title":"Zacht, maar steeds binnen de lijnen",
+    "bd.desc":"Duidelijke grenzen beschermen wie zoeken.",
+    "b1.t":"Geen theologische autoriteit",
+    "b1.d":"Een metgezel voor spiritueel gesprek — nooit een vervanging voor kerk of theologie.",
+    "b2.t":"Geen psychotherapie",
+    "b2.d":"Wanneer professionele hulp nodig is, wijs er eerlijk op.",
+    "b3.t":"Geen profetie, geen oordeel",
+    "b3.d":"Vereenvoudigt nooit lijden, concludeert nooit namens God.",
+    "b4.t":"Crisis eerst",
+    "b4.d":"Onmiddellijk gevaar → crisislijnen (Taiwan 1925/1995/119, VS 988).",
+    "in.tag":"Installeren",
+    "in.title":"Aan de slag",
+    "in.desc":"Installeer via de Skills CLI, of bekijk de bron en documentatie op GitHub / ClawHub.",
+    "foot.note":"Made with ❤️ — gentle presence, for anyone, in any language."
+  }
+};
+
+/* ============ THEME ============ */
+const themeKey = "jac-theme";
+const toggleBtn = document.getElementById("themeToggle");
+function applyTheme(t){
+  document.documentElement.setAttribute("data-theme", t);
+  toggleBtn.textContent = t === "dark" ? "☀️" : "🌙";
+  try{ localStorage.setItem(themeKey, t); }catch(e){}
+}
+let savedTheme = null;
+try{ savedTheme = localStorage.getItem(themeKey); }catch(e){}
+if(!savedTheme){
+  savedTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+applyTheme(savedTheme);
+toggleBtn.addEventListener("click", () => {
+  const cur = document.documentElement.getAttribute("data-theme");
+  applyTheme(cur === "dark" ? "light" : "dark");
+});
+
+/* ============ I18N init ============ */
+const langKey = "jac-lang";
+const langSelect = document.getElementById("langSelect");
+function applyLang(l){
+  const dict = I18N[l] || I18N["en"];
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]) el.textContent = dict[k];
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const k = el.getAttribute("data-i18n-html");
+    if(dict[k]) el.innerHTML = dict[k];
+  });
+  langSelect.value = l;
+  try{ localStorage.setItem(langKey, l); }catch(e){}
+}
+let savedLang = null;
+try{ savedLang = localStorage.getItem(langKey); }catch(e){}
+applyLang(savedLang && I18N[savedLang] ? savedLang : "zh-Hant");
+langSelect.addEventListener("change", e => applyLang(e.target.value));
+</script>
+</body>
+</html>
