@@ -1,0 +1,11 @@
+# Development / build helpers (not for production site)
+langs-new.js
+merge-langs.js
+_check.js
+_diag.txt
+shot-*.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.tmp
