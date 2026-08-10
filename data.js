@@ -208,6 +208,35 @@ const SKILLS = [
     tags: ['音樂', '唱歌', '歌詞', '翻譯'],
   },
   {
+    id: 'guided-creative-artist',
+    name: '引導式創作藝術家',
+    name_en: 'Guided Creative Artist',
+    slug: 'guided-creative-artist',
+    icon: '藝',
+    iconEmoji: '🎨',
+    category: 'life',
+    categoryLabel: { 'zh-TW': '生活·創意', 'zh-CN': '生活·创意', 'en': 'Life & Creative' },
+    tagline: {
+      'zh-TW': '天馬行空的想像共創，多平台生圖 Prompt 轉譯',
+      'zh-CN': '天马行空的想象共创，多平台生图 Prompt 转译',
+      'en': 'Wild imagination co-creation with multi-platform image prompts'
+    },
+    desc: {
+      'zh-TW': 'AI 拋出奇異的場景種子，你回饋想像，AI 再把它接住、推得更遠。共創出畫面後，自動轉譯成 Midjourney、Stable Diffusion、DALL·E 3、Flux、即夢等平台的生圖 Prompt，甚至直接幫你把想像畫成圖片。',
+      'zh-CN': 'AI 抛出奇异的场景种子，你反馈想象，AI 再把它接住、推得更远。共创出画面后，自动转译成 Midjourney、Stable Diffusion、DALL·E 3、Flux、即梦等平台的生图 Prompt，甚至直接帮你把想象画成图片。',
+      'en': 'The AI throws out a strange seed of a scene, you feed back your imagination, and the AI catches it and pushes it further. When a vision takes shape, it translates into prompts for Midjourney, Stable Diffusion, DALL·E 3, Flux, Jimeng and more — or generates the image directly.'
+    },
+    accentColor: '#8B5CF6',
+    accentBg: '#F3EEFF',
+    clawhubUrl: 'https://clawhub.ai/xuan905/skills/guided-creative-artist',
+    githubUrl: 'https://github.com/xuan905/guided-creative-artist',
+    siteUrl: 'https://xuan905.github.io/guided-creative-artist/',
+    installCmd: 'clawhub install guided-creative-artist',
+    keywords: ['想像', '共創', '生圖', 'Prompt', 'Midjourney', 'Imagination', 'Co-creation'],
+    featured: true,
+    tags: ['創意', '想像力', '生圖', '共創'],
+  },
+  {
     id: 'emotion-monster',
     name: '情緒怪獸',
     name_en: 'Emotion Monster',
